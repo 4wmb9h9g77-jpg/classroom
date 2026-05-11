@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>認証中...</title>
+  <style>
+    body { font-family: 'Google Sans', Roboto, sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; background: #f8fafd; }
+    .msg { text-align: center; color: #444746; }
+    .spinner { width: 2rem; height: 2rem; border: 3px solid #c4c7c5; border-top-color: #1a73e8; border-radius: 50%; animation: spin .8s linear infinite; margin: 0 auto 1rem; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body>
+  <div class="msg">
+    <div class="spinner"></div>
+    <p>認証中...</p>
+  </div>
+  <script>
+    // Google OAuth2がリダイレクトで返してくるURLからaccess_tokenを取得
+    // 例: auth.html#access_token=xxx&token_type=Bearer&...
+    const hash = window.location.hash.substring(1);
+    const params = {};
+    hash.split('&').forEach(p => {
+      const [k, v] = p.split('=');
+      params[k] = decodeURIComponent(v || '');
+    });
+
+    if (params.access_token) {
+      // トークンをsessionStorageに保存してメインページに戻る
+      sessionStorage.setItem('gc_access_token', params.access_token);
+      sessionStorage.setItem('gc_token_expiry', String(Date.now() + (parseInt(params.expires_in || '3600') * 1000)));
+      // openerがあれば（ポップアップの場合）メッセージを送ってウィンドウを閉じる
+      if (window.opener) {
+        window.opener.postMessage({ type: 'GC_AUTH_SUCCESS', token: params.access_token, expiry: sessionStorage.getItem('gc_token_expiry') }, 'https://4wmb9h9g77-jpg.github.io');
+        window.close();
+      } else {
+        // リダイレクト方式の場合はそのままindex.htmlへ
+        window.location.href = '/classroom/';
+      }
+    } else if (params.error) {
+      document.querySelector('.msg p').textContent = '認証エラー: ' + params.error;
+    } else {
+      document.querySelector('.msg p').textContent = 'トークンが見つかりません';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+{
+  "name": "Classroom 72E",
+  "short_name": "Classroom",
+  "description": "Google Classroom 72期E組",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f8fafd",
+  "theme_color": "#1a73e8",
+  "lang": "ja",
+  "icons": [
+    {
+      "src": "https://www.gstatic.com/classroom/logo_square_rounded.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -1,0 +1,1933 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Classroom - 72期E組</title>
+  <link rel="manifest" href="manifest.json">
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  <style>
+    /* ===== Classroom本物のCSS変数 ===== */
+    :root {
+      --gm3-sys-color-primary: #0842a0;
+      --gm3-sys-color-on-primary: #fff;
+      --gm3-sys-color-primary-container: #d3e3fd;
+      --gm3-sys-color-surface: #fff;
+      --gm3-sys-color-surface-container-low: #f8fafd;
+      --gm3-sys-color-surface-container: #f0f4f9;
+      --gm3-sys-color-surface-variant: #e1e3e1;
+      --gm3-sys-color-outline-variant: #c4c7c5;
+      --gm3-sys-color-outline: #747775;
+      --gm3-sys-color-on-surface: #1f1f1f;
+      --gm3-sys-color-on-surface-variant: #444746;
+      --gm3-sys-color-inverse-surface: #303030;
+      --gm3-sys-color-secondary: #00639b;
+      --gm3-sys-color-error: #b3261e;
+      --gm3-sys-color-on-primary-fixed-variant: #0842a0;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      height: 100%;
+      font-family: Roboto, Arial, sans-serif;
+      background-color: var(--gm3-sys-color-surface-container-low);
+      color: var(--gm3-sys-color-on-surface);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ---- TOP NAV BAR ---- */
+    .joJglb {
+      background: var(--gm3-sys-color-surface-container-low, #f8fafd);
+      border-bottom: .0625rem solid var(--gm3-sys-color-outline-variant, #c4c7c5);
+      flex-shrink: 0;
+      line-height: 1.7em;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 986;
+    }
+    .gmNu1d { align-items: center; display: flex; flex-direction: row; }
+    .FXKA9c { flex-grow: 1; min-width: 0; overflow: hidden; margin-right: 1rem; }
+    .XIpEib { height: 4rem; padding-left: 1.5rem; }
+    .k43Owe { flex-shrink: 0; margin-right: 1rem; }
+    .Hwv4mb { display: flex; flex-direction: column; justify-content: center; max-width: 100%; overflow: hidden; }
+    .rIyhE { align-items: center; flex-direction: row; justify-content: left; }
+    .cGvavf { flex-direction: row; margin: 0 .125rem 0 .5rem; }
+    .y183Ub { font-family: Google Sans,Roboto,Arial,sans-serif; font-size: 1.5rem; font-weight: 400; letter-spacing: 0; line-height: 2rem; color: var(--gm3-sys-color-on-surface-variant, #444746); }
+    .UAJaRc { height: 28px; }
+    .FkiMUb { margin-left: .625rem; }
+    .PYWmSe { flex-shrink: 0; margin-right: calc(-36px + 1rem); margin-left: calc(-48px + .75rem); }
+
+    /* ---- HAMBURGER / ICON BUTTONS ---- */
+    .pYTkkf-Bz112c-LgbsSe {
+      align-items: center; appearance: none; background: transparent; border: none;
+      box-sizing: border-box; cursor: pointer; display: inline-flex; fill: currentColor;
+      justify-content: center; line-height: inherit; outline: none; position: relative;
+      user-select: none;
+      block-size: 40px; inline-size: 40px;
+      padding: 8px;
+      border-radius: 9999px;
+      transition: background .15s;
+    }
+    .pYTkkf-Bz112c-LgbsSe:hover { background: rgba(68,71,70,.08); }
+    .ykp8pd { color: var(--gm3-sys-color-on-surface-variant, #444746); fill: var(--gm3-sys-color-on-surface-variant, #444746); }
+    .oxacD { margin: -.75rem; }
+    .quRWN-Bz112c { display: inline-flex; align-items: center; justify-content: center; font-family: 'Material Symbols Outlined'; font-size: 24px; font-weight: normal; font-style: normal; letter-spacing: normal; text-transform: none; white-space: nowrap; word-wrap: normal; direction: ltr; -webkit-font-smoothing: antialiased; }
+    .notranslate { }
+
+    /* ---- COURSE CARD ---- */
+    .gHz6xd {
+      background-clip: padding-box;
+      display: flex; flex-direction: column;
+      height: 18.5rem; overflow: hidden;
+      position: relative; text-align: left; width: 18.75rem;
+    }
+    .riU7le {
+      border-radius: .75rem; overflow: hidden;
+      background-color: var(--gm3-sys-color-surface, #fff);
+      border: .0625rem solid var(--gm3-sys-color-outline-variant, #c4c7c5);
+      cursor: pointer;
+      transition: box-shadow .2s;
+    }
+    .riU7le:hover { box-shadow: 0 2px 8px rgba(0,0,0,.15); }
+    .Tc9hUd { min-height: 6.25rem; position: relative; }
+    .O7utsb { height: 100%; left: 0; position: absolute; top: 0; width: 100%; }
+    .lmPo4 { background-color: rgb(23,78,166); }
+    .OjOEXb { background-repeat: no-repeat; background-size: cover; }
+    .ZizeYd { opacity: .7; }
+    .qm64Ve {
+      background: linear-gradient(60deg, rgba(0,0,0,0) 60%, rgba(0,0,0,.7));
+      opacity: .88;
+      position: absolute; inset: 0;
+    }
+    .R4EiSb {
+      display: flex; flex-direction: column; gap: .25rem;
+      padding: 1rem 1rem .5rem; position: relative;
+      position: absolute; bottom: 0; left: 0; right: 0;
+    }
+    .ScpeUc { margin-bottom: .25rem; }
+    .XwD7Ke {
+      font-family: Google Sans,Roboto,Arial,sans-serif;
+      font-size: 1.5rem; font-weight: 400; letter-spacing: 0; line-height: 2rem;
+      color: var(--gm3-sys-color-on-primary, #fff);
+    }
+    .FWGURc { max-width: 13rem; }
+    .Svw0vd {
+      font-family: Google Sans,Roboto,Arial,sans-serif;
+      font-size: .875rem; font-weight: 500; letter-spacing: 0; line-height: 1.25rem;
+      color: var(--gm3-sys-color-on-primary, #fff);
+    }
+    .T30lh {
+      font-family: Google Sans,Roboto,Arial,sans-serif;
+      font-size: .75rem; font-weight: 400; letter-spacing: .00625rem; line-height: 1rem;
+      color: var(--gm3-sys-color-on-primary, #fff);
+    }
+    .prWPdf { display: flex; }
+    .AX2up {
+      font-family: Google Sans,Roboto,Arial,sans-serif;
+      font-size: .75rem; font-weight: 400; letter-spacing: .00625rem; line-height: 1rem;
+      color: var(--gm3-sys-color-on-surface, #1f1f1f);
+      padding: .75rem 1rem;
+    }
+    .SZ0kZe { display: flex; flex-shrink: 0; justify-content: flex-end; padding: .25rem .5rem; border-top: .0625rem solid var(--gm3-sys-color-outline-variant, #c4c7c5); }
+    .Vu2fZd { text-overflow: ellipsis; overflow: hidden; white-space: nowrap; display: block; }
+    .slDfNd { text-decoration: none; color: inherit; }
+
+    /* ---- DRAWER COURSE LIST ---- */
+    .GRvzhf {
+      font-family: Google Sans,Roboto,Arial,sans-serif;
+      font-size: .875rem; font-weight: 500; letter-spacing: 0; line-height: 1.25rem;
+      color: var(--gm3-sys-color-on-surface-variant, #444746);
+    }
+    .YVvGBb { text-overflow: ellipsis; overflow: hidden; white-space: nowrap; display: block; }
+    .kWQ5wd { display: flex; align-items: center; justify-content: center; flex-shrink: 0; width: 2.5rem; height: 2.5rem; }
+    .JShLh { border-radius: 50%; color: #fff; fill: #fff; flex-shrink: 0; height: 1.5rem; text-align: center; width: 1.5rem; display: flex; align-items: center; justify-content: center; font-size: .75rem; font-weight: 600; }
+    .TGnLfc { color: #fff; text-transform: uppercase; }
+    .Ij01W { margin-left: .75rem; flex: 1; min-width: 0; }
+
+    /* ===== 独自レイアウト ===== */
+    .app-main {
+      margin-top: 4rem;
+      min-height: calc(100vh - 4rem);
+    }
+
+    .drawer-overlay {
+      display: none;
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,.32);
+      z-index: 300;
+    }
+    .drawer-overlay.open { display: block; }
+
+    .side-drawer {
+      position: fixed;
+      top: 0; left: 0; bottom: 0;
+      width: 18.75rem;
+      background: var(--gm3-sys-color-surface-container-low, #f8fafd);
+      z-index: 400;
+      transform: translateX(-100%);
+      transition: transform .24s cubic-bezier(.4,0,.2,1);
+      overflow-y: auto;
+      box-shadow: none;
+    }
+    .side-drawer.open {
+      transform: translateX(0);
+      box-shadow: 4px 0 16px rgba(0,0,0,.15);
+    }
+
+    .drawer-topbar {
+      height: 4rem;
+      display: flex; align-items: center;
+      padding: 0 .5rem 0 1.5rem;
+      gap: .5rem;
+    }
+
+    .drawer-nav-item {
+      display: flex; align-items: center;
+      height: 3rem;
+      padding: 0 1.5rem;
+      text-decoration: none;
+      color: var(--gm3-sys-color-on-surface-variant, #444746);
+      border-radius: 0 1.5rem 1.5rem 0;
+      margin-right: .5rem;
+      cursor: pointer;
+      transition: background .15s;
+      position: relative;
+      overflow: hidden;
+    }
+    .drawer-nav-item:hover { background: rgba(68,71,70,.08); }
+    .drawer-nav-item.active {
+      background: var(--gm3-sys-color-primary-container, #d3e3fd);
+      color: var(--gm3-sys-color-on-primary-fixed-variant, #0842a0);
+      font-weight: 500;
+    }
+    .drawer-nav-item-icon {
+      display: flex; align-items: center; justify-content: center;
+      width: 2.5rem; height: 2.5rem; flex-shrink: 0;
+      font-family: 'Material Symbols Outlined'; font-size: 24px;
+      color: inherit;
+    }
+    .drawer-nav-item-label {
+      font-family: Google Sans,Roboto,Arial,sans-serif;
+      font-size: .875rem; font-weight: 500;
+      margin-left: .75rem;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .drawer-divider {
+      border: none; border-top: .0625rem solid var(--gm3-sys-color-outline-variant, #c4c7c5);
+      margin: .5rem 0;
+    }
+    .drawer-section-label {
+      padding: .75rem 1.5rem .25rem;
+      font-family: Google Sans,Roboto,Arial,sans-serif;
+      font-size: .75rem; font-weight: 700;
+      color: var(--gm3-sys-color-on-surface-variant, #444746);
+      letter-spacing: .5px;
+    }
+
+    /* ===== コースカードグリッド ===== */
+    .courses-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      padding: 1.5rem;
+    }
+
+    .gc-view { display: none; }
+    .gc-view.active { display: block; }
+
+    .stream-container {
+      max-width: 62rem;
+      margin: 0 auto;
+      padding: 0;
+    }
+
+    /* コースバナー */
+    .course-banner {
+      border-radius: 0;
+      overflow: hidden;
+      height: 14rem;
+      position: relative;
+      margin-bottom: 0;
+    }
+    .course-banner-bg {
+      position: absolute; inset: 0;
+      background-size: cover; background-position: center;
+    }
+    .course-banner-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,.05) 0%, rgba(0,0,0,.35) 100%);
+    }
+    .course-banner-text {
+      position: absolute; bottom: 1.5rem; left: 1.5rem; right: 1.5rem;
+      color: #fff;
+    }
+    .course-banner-name {
+      font-family: Google Sans,Roboto,Arial,sans-serif;
+      font-size: 2.25rem; font-weight: 400; line-height: 1.1;
+      text-shadow: 0 1px 4px rgba(0,0,0,.3);
+    }
+    .course-banner-sub {
+      font-size: .875rem; opacity: .9; margin-top: .25rem;
+    }
+
+    /* ストリームカード */
+    .stream-card-real {
+      background: var(--gm3-sys-color-surface, #fff);
+      border-radius: .5rem;
+      border: .0625rem solid var(--gm3-sys-color-outline-variant, #c4c7c5);
+      margin-bottom: 1rem;
+      overflow: hidden;
+      transition: box-shadow .2s;
+      cursor: default;
+    }
+    .stream-card-real:hover { box-shadow: 0 1px 3px rgba(0,0,0,.12); }
+    .stream-card-real .card-top {
+      display: flex; align-items: flex-start;
+      padding: 1rem;
+    }
+    .stream-card-real .card-body {
+      padding: 0 1rem .75rem calc(1rem + 2.5rem + .75rem);
+      font-size: .875rem; line-height: 1.5;
+      color: var(--gm3-sys-color-on-surface-variant, #444746);
+    }
+    .stream-card-real .card-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: .5rem 1rem .5rem calc(1rem + 2.5rem + .75rem);
+      border-top: .0625rem solid var(--gm3-sys-color-outline-variant, #c4c7c5);
+      min-height: 3rem;
+    }
+    .JZicYb {
+      display: flex; align-items: flex-start; justify-content: flex-start;
+      flex-shrink: 0; margin-right: .75rem;
+    }
+    .Cxyznd.IqHgie {
+      width: 2.5rem; height: 2.5rem;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      font-family: 'Material Symbols Outlined'; font-size: 20px;
+    }
+    .GQW44b { flex: 1; min-width: 0; }
+    .QUEiXc { display: flex; align-items: flex-start; justify-content: space-between; }
+    .QUEiXc h2 { flex: 1; min-width: 0; font-size: 1rem; font-weight: 400; line-height: 1.4; }
+    .jzdBjc {
+      font-family: Google Sans,Roboto,Arial,sans-serif;
+      font-size: .875rem; font-weight: 500; line-height: 1.4;
+      color: var(--gm3-sys-color-on-surface, #1f1f1f);
+      cursor: pointer;
+    }
+    .jzdBjc:hover { color: #1a73e8; }
+    .JZk9qf {
+      font-size: .75rem; line-height: 1rem;
+      color: var(--gm3-sys-color-on-surface-variant, #444746);
+      flex-shrink: 0; margin-left: .5rem; white-space: nowrap;
+      align-self: flex-start; padding-top: .125rem;
+    }
+    .VjRxGc {
+      font-family: Google Sans,Roboto,Arial,sans-serif;
+      font-size: .875rem; font-weight: 500; letter-spacing: 0; line-height: 1.25rem;
+      color: var(--gm3-sys-color-on-surface, #1f1f1f);
+      margin-top: .125rem;
+    }
+    .deadline-badge {
+      display: inline-flex; align-items: center; gap: .2rem;
+      font-size: .75rem; color: var(--gm3-sys-color-on-surface-variant, #444746);
+    }
+    .deadline-badge .mat-icon { font-family: 'Material Symbols Outlined'; font-size: 14px; }
+    .deadline-badge.urgent { color: #d93025; }
+    .deadline-badge.soon   { color: #e37400; }
+
+    /* ===== 課題ページ ===== */
+    .classwork-container {
+      max-width: 55rem; margin: 0 auto; padding: 1.5rem;
+    }
+    .topic-section { margin-bottom: 1rem; }
+    .topic-header {
+      display: flex; align-items: center;
+      padding: 1.25rem 0 .5rem;
+      border-bottom: .0625rem solid var(--gm3-sys-color-outline-variant, #c4c7c5);
+      cursor: pointer; gap: .5rem;
+    }
+    .topic-title {
+      font-family: Google Sans,Roboto,Arial,sans-serif;
+      font-size: 1.375rem; font-weight: 400;
+      flex: 1; color: var(--gm3-sys-color-on-surface, #1f1f1f);
+    }
+    .topic-chevron {
+      font-family: 'Material Symbols Outlined'; font-size: 24px;
+      color: var(--gm3-sys-color-on-surface-variant, #444746);
+      transition: transform .2s;
+    }
+    .topic-header.collapsed .topic-chevron { transform: rotate(-90deg); }
+    .work-list {
+      background: var(--gm3-sys-color-surface, #fff);
+      border-radius: 0 0 .5rem .5rem;
+      overflow: hidden;
+    }
+    .work-item {
+      display: flex; align-items: center;
+      padding: .75rem 1rem;
+      border-bottom: .0625rem solid var(--gm3-sys-color-outline-variant, #c4c7c5);
+      cursor: pointer; transition: background .15s;
+      background: var(--gm3-sys-color-surface, #fff);
+    }
+    .work-item:last-child { border-bottom: none; }
+    .work-item:hover { background: #f8f9fa; }
+    .work-item-icon {
+      width: 2.5rem; height: 2.5rem; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-right: 1rem;
+      font-family: 'Material Symbols Outlined'; font-size: 20px;
+    }
+    .work-item-icon.assignment { background: #e8f0fe; color: #1a73e8; }
+    .work-item-icon.done-icon  { background: #e6f4ea; color: #1e8e3e; }
+    .work-item-info { flex: 1; min-width: 0; }
+    .work-item-title {
+      font-size: .875rem; font-weight: 500;
+      color: var(--gm3-sys-color-on-surface, #1f1f1f);
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .work-item-title.done { text-decoration: line-through; color: var(--gm3-sys-color-on-surface-variant, #444746); }
+    .work-item-meta {
+      display: flex; align-items: center; gap: .5rem;
+      font-size: .75rem; color: var(--gm3-sys-color-on-surface-variant, #444746);
+      margin-top: .125rem;
+    }
+    .work-item-due {
+      display: flex; align-items: center; gap: .2rem;
+    }
+    .work-item-due .icon { font-family: 'Material Symbols Outlined'; font-size: 14px; }
+    .work-item-due.urgent { color: #d93025; }
+    .work-item-due.soon   { color: #e37400; }
+    .subject-pill {
+      display: inline-flex; align-items: center;
+      height: 1.25rem; padding: 0 .5rem;
+      border-radius: .625rem;
+      font-size: .6875rem; font-weight: 500;
+      white-space: nowrap;
+    }
+    .work-item-right {
+      display: flex; align-items: center; gap: .5rem;
+      flex-shrink: 0; margin-left: .5rem;
+    }
+    .check-btn {
+      width: 2.25rem; height: 2.25rem;
+      border-radius: 50%; border: 2px solid var(--gm3-sys-color-outline-variant, #c4c7c5);
+      background: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      color: transparent; transition: all .15s;
+      font-family: 'Material Symbols Outlined'; font-size: 18px;
+      flex-shrink: 0;
+    }
+    .check-btn:hover { border-color: #1e8e3e; color: #1e8e3e; }
+    .check-btn.done { background: #1e8e3e; border-color: #1e8e3e; color: #fff; }
+
+    /* ===== To-do ===== */
+    .todo-container {
+      max-width: 55rem; margin: 0 auto; padding: 1.5rem;
+    }
+    .todo-page-title {
+      font-family: Google Sans,Roboto,Arial,sans-serif;
+      font-size: 1.75rem; font-weight: 400; margin-bottom: 1rem;
+    }
+    .filter-row {
+      display: flex; gap: .5rem; flex-wrap: wrap; margin-bottom: 1.5rem;
+    }
+    .filter-chip {
+      height: 2rem; padding: 0 .75rem; border-radius: 1rem;
+      border: .0625rem solid var(--gm3-sys-color-outline-variant, #c4c7c5);
+      background: var(--gm3-sys-color-surface, #fff);
+      font-family: Google Sans,Roboto,Arial,sans-serif;
+      font-size: .8125rem; font-weight: 500;
+      color: var(--gm3-sys-color-on-surface-variant, #444746);
+      cursor: pointer; display: flex; align-items: center; gap: .25rem;
+      transition: all .15s; white-space: nowrap;
+    }
+    .filter-chip.active {
+      background: #e8f0fe;
+      border-color: #1a73e8; color: #1a73e8;
+    }
+    .filter-chip:hover:not(.active) { background: var(--gm3-sys-color-surface-container, #f0f4f9); }
+    .filter-chip .icon { font-family: 'Material Symbols Outlined'; font-size: 16px; }
+    .todo-date-label {
+      font-size: .6875rem; font-weight: 700; letter-spacing: .8px;
+      color: var(--gm3-sys-color-on-surface-variant, #444746);
+      text-transform: uppercase;
+      padding: 1rem 0 .5rem;
+      display: flex; align-items: center; gap: .5rem;
+    }
+    .todo-date-label::after { content: ''; flex: 1; height: .0625rem; background: var(--gm3-sys-color-outline-variant, #c4c7c5); }
+
+    /* ===== 詳細モーダル ===== */
+    .detail-overlay {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,.5); z-index: 500;
+      align-items: center; justify-content: center;
+    }
+    .detail-overlay.open { display: flex; }
+    .detail-modal {
+      background: var(--gm3-sys-color-surface, #fff);
+      border-radius: .75rem;
+      width: 90%; max-width: 35rem; max-height: 80vh;
+      overflow-y: auto;
+      box-shadow: 0 8px 24px rgba(0,0,0,.3);
+      animation: modalIn .2s cubic-bezier(.4,0,.2,1);
+    }
+    @keyframes modalIn { from { transform: scale(.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    .detail-header {
+      display: flex; align-items: flex-start; gap: .75rem;
+      padding: 1.25rem 1.25rem .75rem; border-bottom: .0625rem solid var(--gm3-sys-color-outline-variant, #c4c7c5);
+    }
+    .detail-header-icon {
+      width: 2.5rem; height: 2.5rem; border-radius: 50%; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Material Symbols Outlined'; font-size: 20px;
+    }
+    .detail-header-icon.assignment { background: #e8f0fe; color: #1a73e8; }
+    .detail-header-icon.announcement { background: #fce8e6; color: #d93025; }
+    .detail-title-wrap { flex: 1; min-width: 0; }
+    .detail-title {
+      font-family: Google Sans,Roboto,Arial,sans-serif;
+      font-size: 1.125rem; font-weight: 400; line-height: 1.3;
+      color: var(--gm3-sys-color-on-surface, #1f1f1f);
+    }
+    .detail-subtitle { font-size: .75rem; color: var(--gm3-sys-color-on-surface-variant, #444746); margin-top: .25rem; }
+    .detail-close-btn {
+      width: 2.5rem; height: 2.5rem; border-radius: 50%; border: none; background: none;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      color: var(--gm3-sys-color-on-surface-variant, #444746); flex-shrink: 0;
+      font-family: 'Material Symbols Outlined'; font-size: 20px;
+      transition: background .15s;
+    }
+    .detail-close-btn:hover { background: var(--gm3-sys-color-surface-container, #f0f4f9); }
+    .detail-body { padding: 1rem 1.25rem; }
+    .detail-row {
+      display: flex; align-items: flex-start; gap: .75rem;
+      padding: .5rem 0; font-size: .875rem;
+    }
+    .detail-row .icon {
+      font-family: 'Material Symbols Outlined'; font-size: 20px;
+      color: var(--gm3-sys-color-on-surface-variant, #444746); flex-shrink: 0; margin-top: 1px;
+    }
+    .detail-row-label { font-weight: 500; min-width: 3.5rem; color: var(--gm3-sys-color-on-surface, #1f1f1f); }
+    .detail-row-value { color: var(--gm3-sys-color-on-surface-variant, #444746); }
+    .detail-desc {
+      font-size: .875rem; line-height: 1.6; color: var(--gm3-sys-color-on-surface, #1f1f1f);
+      white-space: pre-wrap; padding: .75rem 0;
+      border-top: .0625rem solid var(--gm3-sys-color-outline-variant, #c4c7c5);
+      margin-top: .5rem;
+    }
+    .detail-footer {
+      display: flex; align-items: center; justify-content: flex-end; gap: .5rem;
+      padding: .75rem 1.25rem 1rem;
+      border-top: .0625rem solid var(--gm3-sys-color-outline-variant, #c4c7c5);
+    }
+    .btn-text {
+      height: 2.25rem; padding: 0 1rem; border-radius: .25rem; border: none;
+      background: none; font-family: Google Sans,Roboto,Arial,sans-serif;
+      font-size: .875rem; font-weight: 500; color: #1a73e8; cursor: pointer;
+      transition: background .15s; display: inline-flex; align-items: center; gap: .25rem;
+    }
+    .btn-text:hover { background: #e8f0fe; }
+    .btn-filled {
+      height: 2.25rem; padding: 0 1rem; border-radius: .25rem; border: none;
+      background: #1a73e8; color: #fff;
+      font-family: Google Sans,Roboto,Arial,sans-serif;
+      font-size: .875rem; font-weight: 500; cursor: pointer;
+      display: inline-flex; align-items: center; gap: .25rem; text-decoration: none;
+      transition: background .15s;
+    }
+    .btn-filled:hover { background: #1557b0; }
+    .btn-filled .icon, .btn-text .icon { font-family: 'Material Symbols Outlined'; font-size: 16px; }
+
+    /* ===== ローディング / 空状態 ===== */
+    .loading-state {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 4rem 1.5rem; gap: 1rem;
+      color: var(--gm3-sys-color-on-surface-variant, #444746);
+    }
+    .spinner {
+      width: 2.25rem; height: 2.25rem;
+      border: 3px solid var(--gm3-sys-color-outline-variant, #c4c7c5);
+      border-top-color: #1a73e8; border-radius: 50%;
+      animation: spin .8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .empty-state {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 4rem 1.5rem; gap: .75rem; text-align: center;
+      color: var(--gm3-sys-color-on-surface-variant, #444746);
+    }
+    .empty-state .icon { font-family: 'Material Symbols Outlined'; font-size: 64px; color: var(--gm3-sys-color-outline-variant, #c4c7c5); }
+    .empty-state h3 { font-family: Google Sans,Roboto,Arial,sans-serif; font-size: 1.25rem; font-weight: 400; }
+    .empty-state p  { font-size: .875rem; max-width: 20rem; }
+
+    /* ===== 更新バナー ===== */
+    .update-banner {
+      position: fixed;
+      top: 4.5rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(-4rem);
+      z-index: 900;
+      background: #1f1f1f;
+      color: #fff;
+      border-radius: 1.5rem;
+      padding: .625rem 1.25rem;
+      font-family: Google Sans, Roboto, sans-serif;
+      font-size: .875rem; font-weight: 500;
+      display: flex; align-items: center; gap: .625rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,.3);
+      cursor: pointer;
+      transition: transform .3s cubic-bezier(.4,0,.2,1), opacity .3s;
+      opacity: 0;
+      white-space: nowrap;
+    }
+    .update-banner.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+    .update-banner .mat-icon { font-size: 18px; }
+
+    /* ===== Material Symbols ショートハンド ===== */
+    .mat-icon {
+      font-family: 'Material Symbols Outlined'; font-size: 20px;
+      line-height: 1; font-style: normal; display: inline-flex;
+      align-items: center; justify-content: center;
+    }
+
+    /* ===== Snackbar ===== */
+    .snackbar {
+      position: fixed; bottom: 1.5rem; left: 50%;
+      transform: translateX(-50%) translateY(5rem);
+      background: #323232; color: #fff;
+      font-size: .875rem; font-family: Roboto,sans-serif;
+      padding: .75rem 1.5rem; border-radius: .25rem;
+      z-index: 1000; opacity: 0;
+      transition: transform .3s cubic-bezier(.4,0,.2,1), opacity .3s;
+      white-space: nowrap; max-width: calc(100vw - 3rem);
+      box-shadow: 0 3px 8px rgba(0,0,0,.3);
+    }
+    .snackbar.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+
+    /* ===== ストリームレイアウト ===== */
+    .stream-layout {
+      display: flex;
+      gap: 1.5rem;
+      max-width: 62rem;
+      margin: 0 auto;
+      padding: 1.5rem;
+      align-items: flex-start;
+    }
+    .stream-main { flex: 1; min-width: 0; }
+    .stream-sidebar { width: 16rem; flex-shrink: 0; }
+    .sidebar-card {
+      background: var(--gm3-sys-color-surface, #fff);
+      border-radius: .5rem;
+      border: .0625rem solid var(--gm3-sys-color-outline-variant, #c4c7c5);
+      overflow: hidden;
+      margin-bottom: 1rem;
+    }
+    .sidebar-card-header {
+      padding: .75rem 1rem;
+      font-family: Google Sans,Roboto,Arial,sans-serif;
+      font-size: 1rem; font-weight: 500;
+      color: var(--gm3-sys-color-on-surface, #1f1f1f);
+      border-bottom: .0625rem solid var(--gm3-sys-color-outline-variant, #c4c7c5);
+    }
+    .sidebar-card-item {
+      display: flex; align-items: center;
+      padding: .625rem 1rem; gap: .75rem;
+      cursor: pointer; transition: background .15s;
+      text-decoration: none;
+      color: var(--gm3-sys-color-on-surface, #1f1f1f);
+    }
+    .sidebar-card-item:hover { background: var(--gm3-sys-color-surface-container, #f0f4f9); }
+    .sidebar-card-item .mat-icon {
+      font-family: 'Material Symbols Outlined'; font-size: 20px;
+      color: var(--gm3-sys-color-on-surface-variant, #444746);
+    }
+    .sidebar-card-item-label { font-size: .875rem; flex: 1; }
+    .sidebar-upcoming-item {
+      padding: .75rem 1rem;
+      border-bottom: .0625rem solid var(--gm3-sys-color-outline-variant, #c4c7c5);
+      cursor: pointer; transition: background .15s;
+    }
+    .sidebar-upcoming-item:last-child { border-bottom: none; }
+    .sidebar-upcoming-item:hover { background: var(--gm3-sys-color-surface-container, #f0f4f9); }
+    .sidebar-upcoming-title {
+      font-size: .875rem; font-weight: 500;
+      color: var(--gm3-sys-color-on-surface, #1f1f1f);
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .sidebar-upcoming-due {
+      font-size: .75rem; color: var(--gm3-sys-color-on-surface-variant, #444746);
+      margin-top: .125rem; display: flex; align-items: center; gap: .2rem;
+    }
+    .sidebar-upcoming-due.urgent { color: #d93025; }
+    .sidebar-upcoming-due.soon   { color: #e37400; }
+    .sidebar-upcoming-due .mat-icon { font-family: 'Material Symbols Outlined'; font-size: 14px; }
+
+    /* ===== タブバー ===== */
+    .course-tabs {
+      display: flex;
+      background: var(--gm3-sys-color-surface, #fff);
+      border-radius: .5rem;
+      margin-bottom: 1rem;
+      overflow: hidden;
+      border: .0625rem solid var(--gm3-sys-color-outline-variant, #c4c7c5);
+    }
+    .course-tab {
+      flex: 1; height: 3rem; border: none; background: none;
+      font-family: Google Sans,Roboto,Arial,sans-serif;
+      font-size: .875rem; font-weight: 500;
+      color: var(--gm3-sys-color-on-surface-variant, #444746);
+      cursor: pointer; border-bottom: 3px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .course-tab.active { color: #1a73e8; border-bottom-color: #1a73e8; }
+    .course-tab:hover:not(.active) { background: rgba(26,115,232,.06); }
+
+    /* ===== ログイン画面 ===== */
+    #login-screen {
+      display: flex; align-items: center; justify-content: center;
+      min-height: 100vh;
+      background: var(--gm3-sys-color-surface-container-low, #f8fafd);
+    }
+    .login-card {
+      background: #fff;
+      border-radius: .75rem;
+      border: .0625rem solid var(--gm3-sys-color-outline-variant, #c4c7c5);
+      padding: 2.5rem;
+      text-align: center;
+      width: 90%; max-width: 22rem;
+      box-shadow: 0 4px 16px rgba(0,0,0,.08);
+    }
+    .login-logo {
+      display: flex; align-items: center; justify-content: center; gap: .5rem;
+      margin-bottom: 1.5rem;
+    }
+    .login-logo img { height: 2rem; }
+    .login-logo span {
+      font-family: Google Sans,Roboto,Arial,sans-serif;
+      font-size: 1.5rem; font-weight: 400;
+      color: var(--gm3-sys-color-on-surface-variant, #444746);
+    }
+    .login-title {
+      font-family: Google Sans,Roboto,Arial,sans-serif;
+      font-size: 1.25rem; font-weight: 400;
+      color: var(--gm3-sys-color-on-surface, #1f1f1f);
+      margin-bottom: .5rem;
+    }
+    .login-subtitle {
+      font-size: .875rem;
+      color: var(--gm3-sys-color-on-surface-variant, #444746);
+      margin-bottom: 2rem;
+      line-height: 1.5;
+    }
+    .login-btn {
+      display: flex; align-items: center; justify-content: center; gap: .75rem;
+      width: 100%; height: 2.5rem; padding: 0 1.5rem;
+      border-radius: .25rem; border: .0625rem solid var(--gm3-sys-color-outline-variant, #c4c7c5);
+      background: #fff; cursor: pointer;
+      font-family: Roboto,sans-serif; font-size: .875rem; font-weight: 500;
+      color: var(--gm3-sys-color-on-surface, #1f1f1f);
+      transition: background .15s, box-shadow .15s;
+    }
+    .login-btn:hover { background: #f8f9fa; box-shadow: 0 1px 4px rgba(0,0,0,.15); }
+    .login-btn svg { width: 1.125rem; height: 1.125rem; flex-shrink: 0; }
+    .login-error {
+      font-size: .8125rem; color: #d93025; margin-top: 1rem;
+      display: none;
+    }
+    .login-error.show { display: block; }
+
+    /* ===== モバイル ===== */
+    @media (max-width: 768px) {
+      .stream-layout { flex-direction: column; }
+      .stream-sidebar { width: 100%; }
+    }
+    @media (max-width: 600px) {
+      .courses-grid { padding: 1rem; gap: .75rem; }
+      .gHz6xd { width: 100%; }
+      .classwork-container, .todo-container { padding: .75rem; }
+      .course-banner { height: 10rem; }
+      .course-banner-name { font-size: 1.5rem; }
+      .stream-layout { padding: .75rem; gap: 1rem; }
+      .stream-card-real .card-body { padding-left: 1rem; }
+      .stream-card-real .card-footer { padding-left: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== ログイン画面 ===== -->
+<div id="login-screen">
+  <div class="login-card">
+    <div class="login-logo">
+      <img src="https://www.gstatic.com/classroom/logo_square_rounded.svg" alt="Classroom">
+      <span>Classroom</span>
+    </div>
+    <div class="login-title">72期E組</div>
+    <div class="login-subtitle">学校のGoogleアカウント<br>（@gakugei-hs.info）でログインしてください</div>
+    <button class="login-btn" onclick="startLogin()">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+        <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+        <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+        <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+      </svg>
+      Googleでログイン
+    </button>
+    <div class="login-error" id="login-error"></div>
+  </div>
+</div>
+
+<!-- ===== アプリ本体（ログイン後に表示）===== -->
+<div id="app" style="display:none;">
+
+  <!-- 更新バナー -->
+  <div class="update-banner" id="update-banner" onclick="applyUpdate()">
+    <span class="mat-icon">refresh</span>
+    <span id="update-banner-text">新しい投稿があります</span>
+  </div>
+
+  <!-- Snackbar -->
+  <div class="snackbar" id="snackbar"></div>
+
+  <!-- TOP NAV BAR -->
+  <nav class="joJglb" id="kO001e" role="navigation">
+    <div class="gmNu1d XIpEib">
+      <div class="k43Owe">
+        <button class="pYTkkf-Bz112c-LgbsSe ykp8pd oxacD" onclick="toggleDrawer()" aria-label="メインメニュー">
+          <span class="quRWN-Bz112c notranslate">menu</span>
+        </button>
+      </div>
+      <div class="Hwv4mb rIyhE">
+        <a class="slDfNd gmNu1d cGvavf" href="#" onclick="showView('home');return false;" style="text-decoration:none;">
+          <img src="https://www.gstatic.com/classroom/logo_square_rounded.svg" class="UAJaRc" alt="Google Classroom">
+          <span class="y183Ub FkiMUb">Classroom</span>
+        </a>
+      </div>
+      <div class="gmNu1d PYWmSe" style="margin-left:auto;gap:.25rem;">
+        <button class="pYTkkf-Bz112c-LgbsSe ykp8pd" onclick="refreshCurrent()" title="更新">
+          <span class="quRWN-Bz112c notranslate">refresh</span>
+        </button>
+        <div id="user-avatar" style="
+          width:2rem;height:2rem;border-radius:50%;background:#1a73e8;color:#fff;
+          font-size:.875rem;font-weight:600;display:flex;align-items:center;justify-content:center;
+          cursor:pointer;user-select:none;flex-shrink:0;
+        " title="ログアウト" onclick="confirmLogout()">S</div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- DRAWER OVERLAY -->
+  <div class="drawer-overlay" id="drawer-overlay" onclick="closeDrawer()"></div>
+
+  <!-- SIDE DRAWER -->
+  <div class="side-drawer" id="side-drawer">
+    <div class="drawer-topbar">
+      <button class="pYTkkf-Bz112c-LgbsSe ykp8pd oxacD" onclick="closeDrawer()">
+        <span class="quRWN-Bz112c notranslate">menu</span>
+      </button>
+      <a class="slDfNd gmNu1d" href="#" onclick="showView('home');closeDrawer();return false;" style="text-decoration:none;gap:.375rem;margin-left:.25rem;">
+        <img src="https://www.gstatic.com/classroom/logo_square_rounded.svg" style="height:28px;" alt="">
+        <span class="y183Ub" style="margin-left:.375rem;">Classroom</span>
+      </a>
+    </div>
+    <div id="drawer-nav">
+      <a class="drawer-nav-item active" id="drawer-home" href="#" onclick="showView('home');closeDrawer();return false;">
+        <span class="drawer-nav-item-icon notranslate">home</span>
+        <span class="drawer-nav-item-label">ホーム</span>
+      </a>
+      <a class="drawer-nav-item" id="drawer-todo" href="#" onclick="showView('todo');closeDrawer();return false;">
+        <span class="drawer-nav-item-icon notranslate">check_circle</span>
+        <span class="drawer-nav-item-label">To-do</span>
+      </a>
+      <hr class="drawer-divider">
+      <div class="drawer-section-label">登録済みのクラス</div>
+      <div id="drawer-courses"></div>
+      <hr class="drawer-divider">
+      <a class="drawer-nav-item" href="#" onclick="confirmLogout();closeDrawer();return false;">
+        <span class="drawer-nav-item-icon notranslate">logout</span>
+        <span class="drawer-nav-item-label">ログアウト</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <main class="app-main">
+    <div class="gc-view active" id="view-home">
+      <div id="home-content" class="loading-state">
+        <div class="spinner"></div>
+      </div>
+    </div>
+    <div class="gc-view" id="view-stream">
+      <div class="stream-container">
+        <div id="stream-content" class="loading-state">
+          <div class="spinner"></div>
+        </div>
+      </div>
+    </div>
+    <div class="gc-view" id="view-classwork">
+      <div class="classwork-container">
+        <div id="classwork-content" class="loading-state">
+          <div class="spinner"></div>
+        </div>
+      </div>
+    </div>
+    <div class="gc-view" id="view-todo">
+      <div class="todo-container">
+        <div id="todo-content" class="loading-state">
+          <div class="spinner"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+</div><!-- /#app -->
+
+<!-- 詳細モーダル -->
+<div class="detail-overlay" id="detail-overlay" onclick="closeDetail(event)">
+  <div class="detail-modal" onclick="event.stopPropagation()">
+    <div class="detail-header">
+      <div class="detail-header-icon assignment" id="detail-icon">assignment</div>
+      <div class="detail-title-wrap">
+        <div class="detail-title" id="detail-title"></div>
+        <div class="detail-subtitle" id="detail-subtitle"></div>
+      </div>
+      <button class="detail-close-btn" onclick="closeDetail()">close</button>
+    </div>
+    <div class="detail-body">
+      <div class="detail-row" id="detail-due-row">
+        <span class="icon">event</span>
+        <div>
+          <div class="detail-row-label">締切</div>
+          <div class="detail-row-value" id="detail-due"></div>
+        </div>
+      </div>
+      <div class="detail-row">
+        <span class="icon">book</span>
+        <div>
+          <div class="detail-row-label">教科</div>
+          <div class="detail-row-value" id="detail-subject"></div>
+        </div>
+      </div>
+      <div class="detail-desc" id="detail-desc"></div>
+    </div>
+    <div class="detail-footer">
+      <button class="btn-text" onclick="closeDetail()">閉じる</button>
+      <a class="btn-filled" id="detail-open-btn" href="#" target="_blank">
+        <span class="icon">open_in_new</span>Classroomで開く
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+'use strict';
+
+// ============================================================
+//  設定
+// ============================================================
+const GAS_ENDPOINT  = 'https://script.google.com/macros/s/AKfycbzwe-hIThstFUbhUQlsy6WoNmTpShPnYmbdSI0vXYCAgzNYQOomGbVWJ0kHCbTmLkLw/exec';
+const CLIENT_ID     = '511963964147-lmq62r9fsltr7ue8pasf5dni19cb4vpb.apps.googleusercontent.com';
+const ORIGIN        = location.origin; // GitHub Pagesのorigin
+const SCOPES        = [
+  'https://www.googleapis.com/auth/classroom.courses.readonly',
+  'https://www.googleapis.com/auth/classroom.coursework.me.readonly',
+  'https://www.googleapis.com/auth/classroom.announcements.readonly',
+  'https://www.googleapis.com/auth/classroom.courseworkmaterials.readonly',
+  'email',
+  'profile',
+].join(' ');
+
+// ============================================================
+//  認証
+// ============================================================
+let _token     = null;
+let _expiry    = 0;
+let userEmail  = '';
+
+function isTokenValid() {
+  return _token && Date.now() < _expiry - 60000; // 1分前に期限切れ扱い
+}
+
+function startLogin() {
+  const authUrl =
+    'https://accounts.google.com/o/oauth2/v2/auth' +
+    '?client_id=' + encodeURIComponent(CLIENT_ID) +
+    '&redirect_uri=' + encodeURIComponent(ORIGIN + '/classroom/auth.html') +
+    '&response_type=token' +
+    '&scope=' + encodeURIComponent(SCOPES) +
+    '&prompt=select_account';
+
+  const popup = window.open(authUrl, 'gc_auth', 'width=500,height=650,left=200,top=100');
+  if (!popup) {
+    // ポップアップブロックされた場合はリダイレクト
+    window.location.href = authUrl;
+    return;
+  }
+
+  // ポップアップからのメッセージを待つ
+  window.addEventListener('message', function onMsg(e) {
+    if (e.origin !== ORIGIN) return;
+    if (!e.data || e.data.type !== 'GC_AUTH_SUCCESS') return;
+    window.removeEventListener('message', onMsg);
+    _token  = e.data.token;
+    _expiry = Number(e.data.expiry);
+    sessionStorage.setItem('gc_access_token', _token);
+    sessionStorage.setItem('gc_token_expiry', String(_expiry));
+    initApp();
+  }, false);
+}
+
+function tryRestoreToken() {
+  const t = sessionStorage.getItem('gc_access_token');
+  const e = Number(sessionStorage.getItem('gc_token_expiry') || '0');
+  if (t && Date.now() < e - 60000) {
+    _token  = t;
+    _expiry = e;
+    return true;
+  }
+  return false;
+}
+
+function confirmLogout() {
+  if (!confirm('ログアウトしますか？')) return;
+  _token = null; _expiry = 0;
+  sessionStorage.removeItem('gc_access_token');
+  sessionStorage.removeItem('gc_token_expiry');
+  stopPolling();
+  document.getElementById('app').style.display = 'none';
+  document.getElementById('login-screen').style.display = 'flex';
+  showLoginError('');
+}
+
+function showLoginError(msg) {
+  const el = document.getElementById('login-error');
+  el.textContent = msg;
+  el.classList.toggle('show', !!msg);
+}
+
+// ============================================================
+//  GAS API 呼び出し（fetch + Bearer token）
+// ============================================================
+async function gasCall(action, extra) {
+  if (!isTokenValid()) throw new Error('ログインが必要です');
+  const res = await fetch(GAS_ENDPOINT, {
+    method: 'POST',
+    headers: { 'Content-Type': 'text/plain' }, // GASはContent-Type: application/jsonをCORSで弾く
+    body: JSON.stringify({ action, token: _token, ...extra }),
+  });
+  if (!res.ok) throw new Error('HTTP ' + res.status);
+  return res.json();
+}
+
+function getClassroomData() { return gasCall('getClassroomData'); }
+function forceRefresh()      { return gasCall('forceRefresh'); }
+
+// ============================================================
+//  IndexedDB キャッシュ（永続・TTLなし）
+// ============================================================
+const IDB_NAME  = 'gc_cache';
+const IDB_STORE = 'data';
+let _idb = null;
+
+function idbOpen() {
+  if (_idb) return Promise.resolve(_idb);
+  return new Promise((resolve, reject) => {
+    const req = indexedDB.open(IDB_NAME, 1);
+    req.onupgradeneeded = e => e.target.result.createObjectStore(IDB_STORE);
+    req.onsuccess = e => { _idb = e.target.result; resolve(_idb); };
+    req.onerror   = () => reject(req.error);
+  });
+}
+
+async function lsSave(data) {
+  try {
+    const key = 'classroom_v3_' + userEmail;
+    const db = await idbOpen();
+    return new Promise((resolve, reject) => {
+      const tx  = db.transaction(IDB_STORE, 'readwrite');
+      const req = tx.objectStore(IDB_STORE).put({ data, savedAt: Date.now() }, key);
+      req.onsuccess = () => resolve();
+      req.onerror   = () => reject(req.error);
+    });
+  } catch(_) {}
+}
+
+async function lsLoad() {
+  try {
+    const key = 'classroom_v3_' + userEmail;
+    const db = await idbOpen();
+    return new Promise(resolve => {
+      const tx  = db.transaction(IDB_STORE, 'readonly');
+      const req = tx.objectStore(IDB_STORE).get(key);
+      req.onsuccess = () => resolve(req.result ? req.result.data : null);
+      req.onerror   = () => resolve(null);
+    });
+  } catch(_) { return null; }
+}
+
+async function lsClear() {
+  try {
+    const key = 'classroom_v3_' + userEmail;
+    const db = await idbOpen();
+    return new Promise(resolve => {
+      const tx = db.transaction(IDB_STORE, 'readwrite');
+      tx.objectStore(IDB_STORE).delete(key);
+      tx.oncomplete = () => resolve();
+    });
+  } catch(_) {}
+}
+
+// ============================================================
+//  定数
+// ============================================================
+const COURSE_BG_COLORS = [
+  'rgb(23,78,166)',   // cobalt blue
+  'rgb(52,168,83)',   // sage green
+  'rgb(234,67,53)',   // flamingo
+  'rgb(251,188,5)',   // tangerine
+  'rgb(103,58,183)',  // amethyst
+  'rgb(0,121,107)',   // teal
+  'rgb(33,150,243)',  // blueberry
+  'rgb(96,125,139)',  // graphite
+];
+
+const THEME_IMAGES = [
+  'https://gstatic.com/classroom/themes/img_graduation.jpg',
+  'https://gstatic.com/classroom/themes/img_bookclub.jpg',
+  'https://gstatic.com/classroom/themes/img_reachingout.jpg',
+  'https://gstatic.com/classroom/themes/img_code.jpg',
+  'https://gstatic.com/classroom/themes/Geometry.jpg',
+  'https://gstatic.com/classroom/themes/img_breakfast.jpg',
+  'https://gstatic.com/classroom/themes/img_learnlanguage.jpg',
+  'https://gstatic.com/classroom/themes/Chemistry.jpg',
+];
+
+let courseThemeMap = {};
+
+function hashStr(s) {
+  let h=0; for(let i=0;i<s.length;i++) h=(Math.imul(31,h)+s.charCodeAt(i))|0; return h;
+}
+function courseColor(id) {
+  return COURSE_BG_COLORS[Math.abs(hashStr(String(id||'0'))) % COURSE_BG_COLORS.length];
+}
+function courseThemeImg(id) {
+  if (courseThemeMap[String(id)]) return courseThemeMap[String(id)];
+  return THEME_IMAGES[Math.abs(hashStr(String(id||'0'))) % THEME_IMAGES.length];
+}
+
+// ============================================================
+//  日付ユーティリティ
+// ============================================================
+const TODAY = (()=>{ const d=new Date(); return `${d.getFullYear()}/${String(d.getMonth()+1).padStart(2,'0')}/${String(d.getDate()).padStart(2,'0')}`; })();
+const DOW = ['日','月','火','水','木','金','土'];
+
+function parseDt(s) {
+  if (!s||s==='未定') return null;
+  const p=String(s).split(/[\/\-]/);
+  return p.length<3 ? null : new Date(+p[0],+p[1]-1,+p[2]);
+}
+function diffDays(s) {
+  const d=parseDt(s); if(!d) return null;
+  const t=parseDt(TODAY); return Math.round((d-t)/86400000);
+}
+function fmtDate(s) {
+  if (!s||s==='未定') return '期限なし';
+  const d=parseDt(s); if(!d) return s;
+  const diff=diffDays(s);
+  if(diff===0) return '今日';
+  if(diff===1) return '明日';
+  if(diff===-1) return '昨日';
+  if(diff!==null&&diff>0&&diff<=7) return `${diff}日後 (${d.getMonth()+1}/${d.getDate()})`;
+  return `${d.getMonth()+1}月${d.getDate()}日(${DOW[d.getDay()]})`;
+}
+function fmtCreatedAt(s) {
+  if (!s) return '';
+  const d=parseDt(s); if(!d) return s;
+  const diff=diffDays(s);
+  if(diff===0) return '今日';
+  if(diff===-1) return '昨日';
+  const thisYear=new Date().getFullYear();
+  if(d.getFullYear()===thisYear) return `${d.getMonth()+1}月${d.getDate()}日`;
+  return `${d.getFullYear()}/${d.getMonth()+1}/${d.getDate()}`;
+}
+function fmtDateLong(s) {
+  const d=parseDt(s); if(!d) return s;
+  return `${d.getFullYear()}年${d.getMonth()+1}月${d.getDate()}日(${DOW[d.getDay()]})`;
+}
+function urgCls(s) {
+  const d=diffDays(s); if(d===null) return '';
+  if(d<0) return 'urgent'; if(d<=2) return 'urgent'; if(d<=5) return 'soon'; return '';
+}
+
+// ============================================================
+//  状態
+// ============================================================
+let currentView = 'home';
+let currentCourseId = null;
+let cachedCourses = [];
+let cachedCourseWorks = [];
+let cachedAnns = [];
+let cachedMaterials = [];
+let todoFilter = 'upcoming';
+
+function allItems() {
+  return [
+    ...cachedCourseWorks,
+    ...cachedAnns,
+    ...cachedMaterials,
+  ].sort((a,b) => (b.created_at||'').localeCompare(a.created_at||''));
+}
+
+// ============================================================
+//  ドロワー
+// ============================================================
+function toggleDrawer() {
+  document.getElementById('side-drawer').classList.toggle('open');
+  document.getElementById('drawer-overlay').classList.toggle('open');
+}
+function closeDrawer() {
+  document.getElementById('side-drawer').classList.remove('open');
+  document.getElementById('drawer-overlay').classList.remove('open');
+}
+
+// ============================================================
+//  ビュー
+// ============================================================
+function showView(v, params) {
+  document.querySelectorAll('.gc-view').forEach(e=>e.classList.remove('active'));
+  document.querySelectorAll('.drawer-nav-item').forEach(e=>e.classList.remove('active'));
+  const el = document.getElementById('view-'+v);
+  if (!el) return;
+  el.classList.add('active');
+  currentView = v;
+  const di = document.getElementById('drawer-'+v);
+  if (di) di.classList.add('active');
+  if (v==='home')      loadHome();
+  if (v==='stream')    loadStream(params);
+  if (v==='classwork') loadClasswork(params);
+  if (v==='todo')      loadTodo();
+}
+
+function refreshCurrent() {
+  lsClear();
+  cachedCourses=[]; cachedCourseWorks=[]; cachedAnns=[]; cachedMaterials=[];
+  snack('更新中...');
+  if (currentView==='home')           loadHome(true);
+  else if (currentView==='stream')    loadStream({courseId:currentCourseId});
+  else if (currentView==='classwork') loadClasswork({courseId:currentCourseId});
+  else if (currentView==='todo')      loadTodo(true);
+}
+
+// ============================================================
+//  Snackbar
+// ============================================================
+let snackT=null;
+function snack(msg) {
+  const el=document.getElementById('snackbar');
+  el.textContent=msg; el.classList.add('show');
+  if(snackT) clearTimeout(snackT);
+  snackT=setTimeout(()=>el.classList.remove('show'),3000);
+}
+
+// ============================================================
+//  エスケープ
+// ============================================================
+function esc(s) {
+  return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ============================================================
+//  データ適用ヘルパー
+// ============================================================
+function applyData(data) {
+  cachedCourses     = data.courses      || [];
+  cachedCourseWorks = data.courseWorks  || [];
+  cachedAnns        = data.announcements || [];
+  cachedMaterials   = data.materials    || [];
+  cachedCourses.forEach(c => {
+    if (c.themeImageUrl) courseThemeMap[String(c.id)] = c.themeImageUrl;
+  });
+}
+
+function hasChanged(oldData, newData) {
+  if (!oldData) return true;
+  return (
+    (oldData.courses      ||[]).length !== (newData.courses      ||[]).length ||
+    (oldData.courseWorks  ||[]).length !== (newData.courseWorks  ||[]).length ||
+    (oldData.announcements||[]).length !== (newData.announcements||[]).length ||
+    (oldData.materials    ||[]).length !== (newData.materials    ||[]).length
+  );
+}
+
+// ============================================================
+//  HOME
+// ============================================================
+async function loadHome(force) {
+  const el=document.getElementById('home-content');
+
+  if (force) { await lsClear(); cachedCourses=[]; }
+
+  if (cachedCourses.length) {
+    renderHome(); renderDrawerCourses(); _bgRefresh(); return;
+  }
+
+  const idbData = await lsLoad();
+  if (idbData) {
+    applyData(idbData);
+    renderHome(); renderDrawerCourses();
+    _bgRefresh(idbData);
+    return;
+  }
+
+  el.innerHTML='<div class="loading-state"><div class="spinner"></div></div>';
+  try {
+    const data = await getClassroomData();
+    if (!data || !data.success) throw new Error(data && data.error || '取得失敗');
+    applyData(data);
+    lsSave(data);
+    renderHome(); renderDrawerCourses();
+  } catch(e) {
+    if (e.message === 'ログインが必要です') { showNeedLogin(); return; }
+    el.innerHTML=`<div style="padding:1.5rem;"><div style="background:#fce8e6;border-left:4px solid #d93025;padding:.75rem 1rem;border-radius:.25rem;color:#c5221f;font-size:.875rem;">読み込みエラー: ${esc(e.message)}</div></div>`;
+  }
+}
+
+function showNeedLogin() {
+  document.getElementById('app').style.display = 'none';
+  document.getElementById('login-screen').style.display = 'flex';
+  showLoginError('セッションが切れました。再度ログインしてください。');
+}
+
+let _bgRunning = false;
+function _bgRefresh(prevData) {
+  if (_bgRunning) return;
+  _bgRunning = true;
+  getClassroomData().then(data => {
+    _bgRunning = false;
+    if (!data || !data.success) return;
+    if (hasChanged(prevData || { courses:cachedCourses, courseWorks:cachedCourseWorks, announcements:cachedAnns, materials:cachedMaterials }, data)) {
+      applyData(data); lsSave(data);
+      if (currentView==='home')           { renderHome(); renderDrawerCourses(); }
+      else if (currentView==='stream')    { _renderStream(currentCourseId, document.getElementById('stream-content')); }
+      else if (currentView==='classwork') { _renderClasswork(currentCourseId, document.getElementById('classwork-content')); }
+      else if (currentView==='todo')      { renderTodo(); }
+    } else {
+      lsSave(data);
+    }
+  }).catch(() => { _bgRunning = false; });
+}
+
+function renderHome() {
+  const el=document.getElementById('home-content');
+  if(!cachedCourses.length){
+    el.innerHTML=`<div class="empty-state"><span class="icon">school</span><h3>クラスがありません</h3><p>Classroomに登録されているクラスが表示されます</p></div>`;
+    return;
+  }
+  let html='<div class="courses-grid">';
+  cachedCourses.forEach(c=>{
+    const color=courseColor(c.id);
+    const img=courseThemeImg(c.id);
+    const initial=(c.name||'?')[0].toUpperCase();
+    const taskCount=cachedCourseWorks.filter(t=>String(t.course_id)===String(c.id)&&!t.completed).length;
+    const urgentCount=cachedCourseWorks.filter(t=>String(t.course_id)===String(c.id)&&!t.completed&&urgCls(t.deadline)==='urgent').length;
+    const badge = taskCount>0
+      ? `<span style="background:#e8f0fe;color:#1a73e8;border-radius:.75rem;padding:.125rem .5rem;font-size:.6875rem;font-weight:600;font-family:'Google Sans',Roboto,sans-serif;">${urgentCount>0?'⚠ ':''} ${taskCount}件の未提出の課題</span>`
+      : `<span style="font-size:.6875rem;color:var(--gm3-sys-color-on-surface-variant,#444746);font-family:'Google Sans',Roboto,sans-serif;">提出期限の近い課題はありません</span>`;
+
+    html+=`
+    <li class="gHz6xd riU7le rZXyy" style="list-style:none;" onclick="openCourse('${esc(c.id)}')">
+      <div class="Tc9hUd" style="height:6.25rem;">
+        <div class="O7utsb lmPo4" style="background-color:${color};position:absolute;inset:0;"></div>
+        ${img?`<div class="OjOEXb" style="background-image:url('${img}');position:absolute;inset:0;background-size:cover;background-position:center;opacity:.7;"></div>`:''}
+        <div class="ZizeYd qm64Ve"></div>
+        <div class="R4EiSb">
+          <div class="ScpeUc prWPdf">
+            <div class="Vu2fZd XwD7Ke FWGURc">${esc(c.name)}</div>
+          </div>
+          ${c.section?`<div class="prWPdf"><div class="Vu2fZd Svw0vd">${esc(c.section)}</div></div>`:''}
+          ${c.teacherName?`<div class="prWPdf"><div class="Vu2fZd T30lh">${esc(c.teacherName)}</div></div>`:''}
+        </div>
+      </div>
+      <div style="height:2.5rem;position:relative;">
+        ${c.teacherPhotoUrl
+          ? `<img src="${esc(c.teacherPhotoUrl)}" style="position:absolute;right:1rem;top:-1.25rem;width:2.5rem;height:2.5rem;border-radius:50%;border:2px solid #fff;object-fit:cover;" alt="${esc(c.teacherName||'')}">`
+          : `<div style="position:absolute;right:1rem;top:-1.25rem;width:2.5rem;height:2.5rem;border-radius:50%;border:2px solid #fff;background:${color};display:flex;align-items:center;justify-content:center;color:#fff;font-size:.875rem;font-weight:600;">${initial}</div>`
+        }
+      </div>
+      <div class="xo2x2e AX2up" style="display:block;">${badge}</div>
+      <div class="SZ0kZe" onclick="event.stopPropagation()">
+        <button class="pYTkkf-Bz112c-LgbsSe ykp8pd" onclick="openCourseClasswork('${esc(c.id)}')" title="授業">
+          <span class="quRWN-Bz112c notranslate">assignment</span>
+        </button>
+        <button class="pYTkkf-Bz112c-LgbsSe ykp8pd" onclick="openCourse('${esc(c.id)}')" title="ストリーム">
+          <span class="quRWN-Bz112c notranslate">forum</span>
+        </button>
+        <button class="pYTkkf-Bz112c-LgbsSe ykp8pd" style="margin-left:auto;" title="Classroomで開く" onclick="event.stopPropagation();window.open('${esc(c.alternateLink||'#')}','_blank')">
+          <span class="quRWN-Bz112c notranslate">open_in_new</span>
+        </button>
+      </div>
+    </li>`;
+  });
+  html+='</div>';
+  el.innerHTML=html;
+}
+
+function renderDrawerCourses() {
+  const el=document.getElementById('drawer-courses');
+  if(!el) return;
+  el.innerHTML=cachedCourses.map(c=>`
+    <a class="drawer-nav-item uTwgne" href="#" onclick="openCourse('${esc(c.id)}');closeDrawer();return false;">
+      <div class="kWQ5wd">
+        <div class="JShLh TGnLfc" style="background:${courseColor(c.id)};">${(c.name||'?')[0].toUpperCase()}</div>
+      </div>
+      <div class="Ij01W"><div class="GRvzhf YVvGBb">${esc(c.name)}</div></div>
+    </a>`).join('');
+}
+
+// ============================================================
+//  コースを開く
+// ============================================================
+function openCourse(cid) { currentCourseId=cid; showView('stream',{courseId:cid}); }
+function openCourseClasswork(cid) { currentCourseId=cid; showView('classwork',{courseId:cid}); }
+
+async function ensureData() {
+  if (cachedCourses.length) { _bgRefresh(); return true; }
+  const idbData = await lsLoad();
+  if (idbData) { applyData(idbData); _bgRefresh(idbData); return true; }
+  const data = await getClassroomData();
+  if (!data || !data.success) throw new Error(data && data.error || '取得失敗');
+  applyData(data); lsSave(data);
+  return true;
+}
+
+// ============================================================
+//  STREAM
+// ============================================================
+async function loadStream(params) {
+  const cid=(params&&params.courseId)||currentCourseId;
+  const el=document.getElementById('stream-content');
+  if (!cachedCourses.length) el.innerHTML='<div class="loading-state"><div class="spinner"></div></div>';
+  try {
+    await ensureData(); renderDrawerCourses();
+  } catch(e) {
+    if (e.message==='ログインが必要です') { showNeedLogin(); return; }
+    el.innerHTML=`<div style="padding:1.5rem;color:#c5221f;">読み込みエラー: ${esc(e.message)}</div>`; return;
+  }
+  _renderStream(cid, el);
+}
+
+function _renderStream(cid, el) {
+  const c=cachedCourses.find(x=>String(x.id)===String(cid))||{id:cid,name:'クラス'};
+  const items=[
+    ...cachedCourseWorks.filter(t=>String(t.course_id)===String(cid)),
+    ...cachedAnns.filter(a=>String(a.course_id)===String(cid)),
+    ...cachedMaterials.filter(m=>String(m.course_id)===String(cid)),
+  ].sort((a,b)=>(b.created_at||'').localeCompare(a.created_at||''));
+  const color=courseColor(cid);
+  const img=courseThemeImg(cid);
+
+  const upcoming=cachedCourseWorks
+    .filter(t=>String(t.course_id)===String(cid)&&!t.completed&&t.deadline&&t.deadline!=='未定')
+    .sort((a,b)=>(a.deadline||'').localeCompare(b.deadline||''))
+    .slice(0,5);
+
+  let html=`
+    <div class="course-banner" style="max-width:62rem;margin:0 auto 0;border-radius:0 0 .75rem .75rem;">
+      <div class="course-banner-bg" style="background-image:url('${img}');background-color:${color};"></div>
+      <div class="course-banner-overlay"></div>
+      <div class="course-banner-text">
+        <div class="course-banner-name">${esc(c.name)}</div>
+        ${c.section?`<div class="course-banner-sub">${esc(c.section)}</div>`:''}
+      </div>
+    </div>
+    <div style="max-width:62rem;margin:0 auto;">
+      <div class="course-tabs" style="border-radius:0;border-left:none;border-right:none;border-top:none;">
+        <button class="course-tab active">ストリーム</button>
+        <button class="course-tab" onclick="openCourseClasswork('${esc(cid)}')">授業</button>
+      </div>
+    </div>
+    <div class="stream-layout">
+      <div class="stream-main">`;
+
+  if(!items.length){
+    html+=`<div class="empty-state"><span class="icon">forum</span><h3>投稿はありません</h3></div>`;
+  } else {
+    items.forEach(item=>{ html+=buildStreamCard(item); });
+  }
+
+  html+=`</div>
+    <div class="stream-sidebar">
+      <div class="sidebar-card">
+        <div class="sidebar-card-header">近日の課題</div>`;
+  if(!upcoming.length){
+    html+=`<div style="padding:.75rem 1rem;font-size:.875rem;color:var(--gm3-sys-color-on-surface-variant,#444746);">提出期限が近い課題はありません</div>`;
+  } else {
+    upcoming.forEach(t=>{
+      const urg=urgCls(t.deadline);
+      html+=`
+      <div class="sidebar-upcoming-item" onclick="openDetail(${JSON.stringify(JSON.stringify(t))})">
+        <div class="sidebar-upcoming-title">${esc(t.title||'')}</div>
+        <div class="sidebar-upcoming-due ${urg}">
+          <span class="mat-icon">event</span>${esc(fmtDate(t.deadline))}
+        </div>
+      </div>`;
+    });
+  }
+  html+=`</div>
+      <div class="sidebar-card">
+        <a class="sidebar-card-item" href="${esc(c.alternateLink||'#')}" target="_blank">
+          <span class="mat-icon">open_in_new</span>
+          <span class="sidebar-card-item-label">Classroomで開く</span>
+        </a>
+      </div>
+    </div>
+  </div>`;
+
+  el.innerHTML=html;
+}
+
+function buildStreamCard(item) {
+  const isTask=item.type==='assignment';
+  const isMaterial=item.type==='material';
+  const isAnn=item.type==='announcement';
+  const title=item.title||'（タイトルなし）';
+  const desc=item.description||'';
+  const dl=item.deadline||'';
+  const urg=isTask?urgCls(dl):'';
+  const dueLabel=dl&&dl!=='未定'?fmtDate(dl):'';
+  const aid=esc(item.id||'');
+  const dateStr=fmtCreatedAt(item.created_at||'');
+
+  const iconName = isTask?'assignment':isMaterial?'description':'campaign';
+  const iconBg   = isTask?'#e8f0fe':isMaterial?'#e6f4ea':'#fce8e6';
+  const iconClr  = isTask?'rgb(26,115,232)':isMaterial?'rgb(30,142,62)':'rgb(217,48,37)';
+
+  let actionText='';
+  if(isTask)          actionText=`新しい課題: 「${title}」`;
+  else if(isMaterial) actionText=`新しい資料を投稿しました: ${title}`;
+  else                actionText=`お知らせを投稿しました`;
+
+  return `
+  <div class="stream-card-real" id="sc-${aid}">
+    <div class="card-top">
+      <div class="JZicYb">
+        <div class="Cxyznd IqHgie" style="background:${iconBg};color:${iconClr};">${iconName}</div>
+      </div>
+      <div class="GQW44b">
+        <div class="QUEiXc">
+          <h2>
+            <span class="jzdBjc" onclick="openDetail(${JSON.stringify(JSON.stringify(item))})">${esc(actionText)}</span>
+          </h2>
+          <span class="JZk9qf">${esc(dateStr)}</span>
+        </div>
+        ${isTask&&item.completed?`<div style="display:inline-flex;align-items:center;gap:.25rem;font-size:.75rem;color:#1e8e3e;margin-top:.125rem;"><span style="font-family:'Material Symbols Outlined';font-size:14px;">check_circle</span>提出済み</div>`:''}
+        ${isTask&&!item.completed&&dueLabel?`<div class="VjRxGc" style="font-size:.75rem;font-weight:400;color:var(--gm3-sys-color-on-surface-variant,#444746);margin-top:.125rem;">締切: ${esc(dueLabel)}</div>`:''}
+        ${isAnn&&desc?`<div class="VjRxGc" style="font-size:.875rem;font-weight:400;color:var(--gm3-sys-color-on-surface-variant,#444746);margin-top:.25rem;white-space:pre-wrap;word-break:break-word;">${esc(desc.length>200?desc.slice(0,200)+'…':desc)}</div>`:''}
+      </div>
+    </div>
+    <div class="card-footer">
+      <div class="deadline-badge ${urg}">
+        ${isTask&&dueLabel?`<span class="mat-icon">event</span>${esc(dueLabel)}`:''}
+      </div>
+      <div style="display:flex;align-items:center;gap:.5rem;">
+        ${isTask?`<button class="check-btn ${item.completed?'done':''}" onclick="toggleTask('${aid}',this)" title="${item.completed?'提出を取り消す':'提出済みにする'}">${item.completed?'<span style="font-family:\'Material Symbols Outlined\';font-size:18px;">check</span>':''}</button>`:''}
+        ${item.link?`<a class="open-link" href="${esc(item.link)}" target="_blank" style="display:inline-flex;align-items:center;gap:.25rem;font-size:.875rem;font-weight:500;font-family:Google Sans,Roboto,Arial,sans-serif;color:#1a73e8;text-decoration:none;padding:.375rem .75rem;border-radius:.25rem;transition:background .15s;"><span style="font-family:'Material Symbols Outlined';font-size:16px;">open_in_new</span>開く</a>`:''}
+      </div>
+    </div>
+  </div>`;
+}
+
+// ============================================================
+//  CLASSWORK
+// ============================================================
+async function loadClasswork(params) {
+  const cid=(params&&params.courseId)||currentCourseId;
+  const el=document.getElementById('classwork-content');
+  if (!cachedCourses.length) el.innerHTML='<div class="loading-state"><div class="spinner"></div></div>';
+  try { await ensureData(); renderDrawerCourses(); }
+  catch(e) {
+    if (e.message==='ログインが必要です') { showNeedLogin(); return; }
+    el.innerHTML=`<div style="padding:1.5rem;color:#c5221f;">読み込みエラー: ${esc(e.message)}</div>`; return;
+  }
+  _renderClasswork(cid, el);
+}
+
+function _renderClasswork(cid, el) {
+  const c=cachedCourses.find(x=>String(x.id)===String(cid))||{id:cid,name:'クラス'};
+  const tasks=cachedCourseWorks.filter(t=>String(t.course_id)===String(cid))
+                               .sort((a,b)=>(a.deadline||'9999').localeCompare(b.deadline||'9999'));
+  const color=courseColor(cid);
+  const img=courseThemeImg(cid);
+
+  let html=`
+    <div class="course-banner" style="max-width:62rem;margin:0 auto;border-radius:0 0 .75rem .75rem;">
+      <div class="course-banner-bg" style="background-image:url('${img}');background-color:${color};"></div>
+      <div class="course-banner-overlay"></div>
+      <div class="course-banner-text">
+        <div class="course-banner-name">${esc(c.name)}</div>
+        ${c.section?`<div class="course-banner-sub">${esc(c.section)}</div>`:''}
+      </div>
+    </div>
+    <div style="max-width:62rem;margin:0 auto;">
+      <div class="course-tabs" style="border-radius:0;border-left:none;border-right:none;border-top:none;">
+        <button class="course-tab" onclick="openCourse('${esc(cid)}')">ストリーム</button>
+        <button class="course-tab active">授業</button>
+      </div>
+    </div>
+    <div class="classwork-container">`;
+
+  if(!tasks.length){
+    html+=`<div class="empty-state"><span class="icon">assignment</span><h3>課題はありません</h3></div></div>`;
+    el.innerHTML=html; return;
+  }
+
+  const grps={};
+  const ORDER=['今日まで','明日まで','今週中','それ以降','期限なし','期限切れ'];
+  tasks.forEach(t=>{
+    const diff=diffDays(t.deadline);
+    let g;
+    if(!t.deadline||t.deadline==='未定') g='期限なし';
+    else if(diff<0)   g='期限切れ';
+    else if(diff===0) g='今日まで';
+    else if(diff===1) g='明日まで';
+    else if(diff<=7)  g='今週中';
+    else              g='それ以降';
+    if(!grps[g]) grps[g]=[];
+    grps[g].push(t);
+  });
+
+  ORDER.filter(g=>grps[g]).forEach(g=>{
+    html+=`
+    <div class="topic-section">
+      <div class="topic-header" onclick="this.classList.toggle('collapsed');this.nextElementSibling.style.display=this.classList.contains('collapsed')?'none':'block'">
+        <span class="topic-title">${g}</span>
+        <span class="topic-chevron notranslate" style="font-family:'Material Symbols Outlined';font-size:24px;">expand_more</span>
+      </div>
+      <div class="work-list">`;
+    grps[g].forEach(t=>{ html+=buildWorkItem(t); });
+    html+=`</div></div>`;
+  });
+  html+=`</div>`;
+  el.innerHTML=html;
+}
+
+function buildWorkItem(item) {
+  const done=item.completed;
+  const dl=item.deadline||'';
+  const urg=urgCls(dl);
+  const dueLabel=dl&&dl!=='未定'?fmtDate(dl):'期限なし';
+  const aid=esc(item.id||'');
+  let chip='';
+  if(urg==='urgent'&&diffDays(dl)<0) chip=`<span style="font-size:.6875rem;padding:.125rem .5rem;border-radius:.75rem;background:#fce8e6;color:#d93025;font-weight:600;">期限切れ</span>`;
+  else if(urg==='urgent') chip=`<span style="font-size:.6875rem;padding:.125rem .5rem;border-radius:.75rem;background:#fce8e6;color:#d93025;font-weight:600;">急ぎ</span>`;
+  else if(urg==='soon')   chip=`<span style="font-size:.6875rem;padding:.125rem .5rem;border-radius:.75rem;background:#fef7e0;color:#e37400;font-weight:600;">まもなく</span>`;
+
+  return `
+  <div class="work-item" id="wi-${aid}" onclick="openDetail(${JSON.stringify(JSON.stringify(item))})">
+    <div class="work-item-icon ${done?'done-icon':'assignment'}">${done?'assignment_turned_in':'assignment'}</div>
+    <div class="work-item-info">
+      <div class="work-item-title ${done?'done':''}">${esc(item.title||'（タイトルなし）')}</div>
+      <div class="work-item-meta">
+        <span class="subject-pill" style="background:#e8f0fe;color:#1a73e8;">${esc(item.course_name||'')}</span>
+        <div class="work-item-due ${urg}">
+          <span class="icon notranslate" style="font-family:'Material Symbols Outlined';font-size:14px;">event</span>
+          ${esc(dueLabel)}
+        </div>
+        ${chip}
+      </div>
+    </div>
+    <div class="work-item-right" onclick="event.stopPropagation()">
+      <button class="check-btn ${done?'done':''}"
+        onclick="toggleTask('${aid}',this)"
+        title="${done?'完了済み（クリックで戻す）':'完了にする'}">
+        ${done?'<span style="font-family:\'Material Symbols Outlined\';font-size:18px;">check</span>':'<span style="font-family:\'Material Symbols Outlined\';font-size:18px;color:transparent;">check</span>'}
+      </button>
+    </div>
+  </div>`;
+}
+
+// ============================================================
+//  TODO
+// ============================================================
+async function loadTodo(force) {
+  const el=document.getElementById('todo-content');
+  if (force) { await lsClear(); cachedCourses=[]; }
+  if (!cachedCourseWorks.length) el.innerHTML='<div class="loading-state"><div class="spinner"></div></div>';
+  try { await ensureData(); renderTodo(); }
+  catch(e) {
+    if (e.message==='ログインが必要です') { showNeedLogin(); return; }
+    el.innerHTML=`<div style="padding:1.5rem;color:#c5221f;">${esc(e.message)}</div>`;
+  }
+}
+
+function setTodoFilter(f) {
+  todoFilter=f;
+  document.querySelectorAll('.filter-chip').forEach(c=>c.classList.toggle('active',c.dataset.filter===f));
+  renderTodo();
+}
+
+function renderTodo() {
+  const el=document.getElementById('todo-content');
+  let tasks=[...cachedCourseWorks];
+  if(todoFilter==='upcoming') tasks=tasks.filter(t=>!t.completed);
+  if(todoFilter==='done')     tasks=tasks.filter(t=>t.completed);
+  if(todoFilter==='overdue')  tasks=tasks.filter(t=>!t.completed&&diffDays(t.deadline)!==null&&diffDays(t.deadline)<0);
+  tasks.sort((a,b)=>(a.deadline||'9999/99/99').localeCompare(b.deadline||'9999/99/99'));
+
+  let html=`
+    <div class="todo-page-title">To-do</div>
+    <div class="filter-row">
+      <button class="filter-chip ${todoFilter==='upcoming'?'active':''}" data-filter="upcoming" onclick="setTodoFilter('upcoming')"><span class="icon notranslate" style="font-family:'Material Symbols Outlined';font-size:16px;">schedule</span> 近日</button>
+      <button class="filter-chip ${todoFilter==='done'?'active':''}" data-filter="done" onclick="setTodoFilter('done')"><span class="icon notranslate" style="font-family:'Material Symbols Outlined';font-size:16px;">check_circle</span> 完了済み</button>
+      <button class="filter-chip ${todoFilter==='overdue'?'active':''}" data-filter="overdue" onclick="setTodoFilter('overdue')"><span class="icon notranslate" style="font-family:'Material Symbols Outlined';font-size:16px;">warning</span> 期限切れ</button>
+    </div>`;
+
+  if(!tasks.length){
+    html+=`<div class="empty-state"><span class="icon notranslate" style="font-family:'Material Symbols Outlined';font-size:64px;color:var(--gm3-sys-color-outline-variant,#c4c7c5);">check_circle_outline</span><h3>${todoFilter==='done'?'完了した課題はありません':todoFilter==='overdue'?'期限切れはありません！':'すべて完了しています！'}</h3></div>`;
+  } else {
+    const grps={},gOrder=[];
+    tasks.forEach(t=>{
+      const diff=diffDays(t.deadline);
+      let g;
+      if(!t.deadline||t.deadline==='未定') g='期限なし';
+      else if(diff<0)   g='期限切れ';
+      else if(diff===0) g='今日';
+      else if(diff===1) g='明日';
+      else              g=fmtDateLong(t.deadline);
+      if(!grps[g]){grps[g]=[];gOrder.push(g);}
+      grps[g].push(t);
+    });
+    gOrder.forEach(g=>{
+      html+=`<div class="todo-date-label">${esc(g)}</div>
+        <div style="background:var(--gm3-sys-color-surface,#fff);border-radius:.5rem;margin-bottom:.5rem;overflow:hidden;border:.0625rem solid var(--gm3-sys-color-outline-variant,#c4c7c5);">`;
+      grps[g].forEach(t=>{ html+=buildWorkItem(t); });
+      html+=`</div>`;
+    });
+  }
+  el.innerHTML=html;
+}
+
+// ============================================================
+//  課題完了トグル
+// ============================================================
+function toggleTask(taskId, btn) {
+  const done=btn.classList.contains('done');
+  const newVal=!done;
+
+  document.querySelectorAll(`[onclick*="'${taskId}'"]`).forEach(b => {
+    if(b.classList.contains('check-btn')) {
+      if(newVal) {
+        b.classList.add('done');
+        b.innerHTML='<span style="font-family:\'Material Symbols Outlined\';font-size:18px;">check</span>';
+        b.title='提出を取り消す';
+      } else {
+        b.classList.remove('done');
+        b.innerHTML='';
+        b.title='提出済みにする';
+      }
+    }
+  });
+
+  cachedCourseWorks=cachedCourseWorks.map(t=>t.id===taskId?{...t,completed:newVal}:t);
+  snack(newVal?'✓ 提出済みにしました':'提出を取り消しました');
+  if(currentView==='todo') renderTodo();
+
+  gasCall('setTaskCompleted', { courseWorkId: taskId, completed: newVal }).catch(()=>{});
+}
+
+// ============================================================
+//  詳細モーダル
+// ============================================================
+function openDetail(itemJson) {
+  const item=typeof itemJson==='string'?JSON.parse(itemJson):itemJson;
+  const isTask=item.type==='assignment';
+  const isMaterial=item.type==='material';
+
+  const icon=document.getElementById('detail-icon');
+  icon.className='detail-header-icon '+(isTask?'assignment':isMaterial?'material':'announcement');
+  icon.textContent=isTask?'assignment':isMaterial?'description':'campaign';
+
+  document.getElementById('detail-title').textContent=item.title||'（タイトルなし）';
+  document.getElementById('detail-subtitle').textContent=item.course_name||'';
+
+  const dueRow=document.getElementById('detail-due-row');
+  if(isTask&&item.deadline&&item.deadline!=='未定'){
+    document.getElementById('detail-due').textContent=fmtDateLong(item.deadline)+' まで';
+    dueRow.style.display='flex';
+  } else { dueRow.style.display='none'; }
+
+  document.getElementById('detail-subject').textContent=item.course_name||'';
+  const descEl=document.getElementById('detail-desc');
+  descEl.textContent=item.description||'';
+  descEl.style.display=item.description?'block':'none';
+
+  const openBtn=document.getElementById('detail-open-btn');
+  openBtn.href=item.link||'#';
+  openBtn.style.display=item.link?'inline-flex':'none';
+
+  document.getElementById('detail-overlay').classList.add('open');
+}
+
+function closeDetail(e) {
+  if(e&&e.target!==document.getElementById('detail-overlay')) return;
+  document.getElementById('detail-overlay').classList.remove('open');
+}
+
+// ============================================================
+//  ポーリング（共有サマリー差分通知）
+// ============================================================
+const POLL_INTERVAL = 30 * 1000;
+let _pollTimer    = null;
+let _lastWrittenAt = null;
+let _pendingData  = null;
+let _pollActive   = false;
+
+// 学校の時間帯（月〜金 7:30〜20:00）のみポーリング
+function shouldPoll() {
+  const now = new Date();
+  const dow = now.getDay(); // 0=日, 6=土
+  if (dow === 0 || dow === 6) return false;
+  const h = now.getHours();
+  const m = now.getMinutes();
+  const t = h * 60 + m;
+  return t >= 7*60+30 && t < 20*60;
+}
+
+function showUpdateBanner(msg) {
+  const banner = document.getElementById('update-banner');
+  document.getElementById('update-banner-text').textContent = msg;
+  banner.classList.add('show');
+}
+function hideUpdateBanner() {
+  document.getElementById('update-banner').classList.remove('show');
+}
+
+function applyUpdate() {
+  hideUpdateBanner();
+  if (!_pendingData) return;
+  applyData(_pendingData); lsSave(_pendingData); _pendingData = null;
+  if (currentView==='home')           { renderHome(); renderDrawerCourses(); }
+  else if (currentView==='stream')    { _renderStream(currentCourseId, document.getElementById('stream-content')); }
+  else if (currentView==='classwork') { _renderClasswork(currentCourseId, document.getElementById('classwork-content')); }
+  else if (currentView==='todo')      { renderTodo(); }
+  snack('更新しました');
+}
+
+async function pollOnce() {
+  if (_pollActive || !shouldPoll()) return;
+  _pollActive = true;
+  try {
+    const summary = await gasCall('getSharedSummary');
+    if (!summary || !summary.success || summary.empty) return;
+
+    const { cwCount, annCount, matCount, latestTime, writtenAt } = summary;
+    if (!_lastWrittenAt) { _lastWrittenAt = writtenAt; return; }
+    if (writtenAt === _lastWrittenAt) return;
+    _lastWrittenAt = writtenAt;
+
+    const myChanged =
+      cwCount  !== cachedCourseWorks.length ||
+      annCount !== cachedAnns.length        ||
+      matCount !== cachedMaterials.length   ||
+      latestTime > (cachedCourseWorks[0] && cachedCourseWorks[0].created_at || '');
+
+    if (!myChanged) return;
+
+    const data = await gasCall('forceRefresh');
+    if (!data || !data.success) return;
+
+    _pendingData = data;
+    const newCw  = Math.max(0, (data.courseWorks   ||[]).length - cachedCourseWorks.length);
+    const newAnn = Math.max(0, (data.announcements ||[]).length - cachedAnns.length);
+    const newMat = Math.max(0, (data.materials     ||[]).length - cachedMaterials.length);
+    let msg = '新しい投稿があります';
+    const parts = [];
+    if (newCw  > 0) parts.push(`課題${newCw}件`);
+    if (newAnn > 0) parts.push(`お知らせ${newAnn}件`);
+    if (newMat > 0) parts.push(`資料${newMat}件`);
+    if (parts.length) msg = parts.join('・') + 'の新着';
+    showUpdateBanner(msg + ' — タップして更新');
+  } catch(_) {}
+  finally { _pollActive = false; }
+}
+
+function startPolling() {
+  if (_pollTimer) return;
+  gasCall('getSharedSummary').then(s => {
+    if (s && s.success && !s.empty) _lastWrittenAt = s.writtenAt;
+  }).catch(()=>{});
+  _pollTimer = setInterval(pollOnce, POLL_INTERVAL);
+}
+
+function stopPolling() {
+  if (_pollTimer) { clearInterval(_pollTimer); _pollTimer = null; }
+}
+
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) { stopPolling(); }
+  else { startPolling(); pollOnce(); }
+});
+
+// ============================================================
+//  Service Worker 登録
+// ============================================================
+async function registerSW() {
+  if (!('serviceWorker' in navigator)) return;
+  try {
+    await navigator.serviceWorker.register('./sw.js');
+  } catch(_) {}
+}
+
+// ============================================================
+//  アプリ初期化
+// ============================================================
+function initApp() {
+  document.getElementById('login-screen').style.display = 'none';
+  document.getElementById('app').style.display = 'block';
+
+  // アバターの頭文字を設定
+  const initial = (userEmail || 'U')[0].toUpperCase();
+  document.getElementById('user-avatar').textContent = initial;
+
+  try {
+    const p=new URLSearchParams(window.location.search);
+    const tab=p.get('tab');
+    if(['home','todo','stream','classwork'].includes(tab)) showView(tab);
+    else showView('home');
+  } catch(_){ showView('home'); }
+
+  setTimeout(startPolling, 5000);
+  registerSW();
+}
+
+// ============================================================
+//  起動時: トークン復元 or ログイン画面
+// ============================================================
+(async function boot() {
+  if (tryRestoreToken()) {
+    // sessionStorageにトークンあり → すぐアプリ起動
+    // emailをtokeninfoから取得
+    try {
+      const infoRes = await fetch(
+        'https://www.googleapis.com/oauth2/v3/tokeninfo?access_token=' + encodeURIComponent(_token)
+      );
+      const info = await infoRes.json();
+      userEmail = info.email || '';
+    } catch(_) {
+      userEmail = '';
+    }
+    initApp();
+  }
+  // それ以外はログイン画面のまま待機
+})();
+</script>
+</body>
+</html>
