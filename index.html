@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Classroom - 72期E組</title>
-  <link rel="manifest" href="manifest.json">
+  <title>Classroom</title>
   <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <!-- Google Symbols (Material Symbols) -->
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
   <style>
     /* ===== Classroom本物のCSS変数 ===== */
@@ -37,6 +37,8 @@
       -webkit-font-smoothing: antialiased;
     }
 
+    /* ===== 本物のClassroomクラス（classroomelement.htmlより移植）===== */
+
     /* ---- TOP NAV BAR ---- */
     .joJglb {
       background: var(--gm3-sys-color-surface-container-low, #f8fafd);
@@ -57,8 +59,10 @@
     .cGvavf { flex-direction: row; margin: 0 .125rem 0 .5rem; }
     .y183Ub { font-family: Google Sans,Roboto,Arial,sans-serif; font-size: 1.5rem; font-weight: 400; letter-spacing: 0; line-height: 2rem; color: var(--gm3-sys-color-on-surface-variant, #444746); }
     .UAJaRc { height: 28px; }
+    .dR850e { display: none; margin-left: 0; }
     .FkiMUb { margin-left: .625rem; }
     .PYWmSe { flex-shrink: 0; margin-right: calc(-36px + 1rem); margin-left: calc(-48px + .75rem); }
+    .Oe4zIb { display: none; margin: 0; }
 
     /* ---- HAMBURGER / ICON BUTTONS ---- */
     .pYTkkf-Bz112c-LgbsSe {
@@ -74,10 +78,30 @@
     .pYTkkf-Bz112c-LgbsSe:hover { background: rgba(68,71,70,.08); }
     .ykp8pd { color: var(--gm3-sys-color-on-surface-variant, #444746); fill: var(--gm3-sys-color-on-surface-variant, #444746); }
     .oxacD { margin: -.75rem; }
+    .NMm5M { fill: currentColor; flex-shrink: 0; }
     .quRWN-Bz112c { display: inline-flex; align-items: center; justify-content: center; font-family: 'Material Symbols Outlined'; font-size: 24px; font-weight: normal; font-style: normal; letter-spacing: normal; text-transform: none; white-space: nowrap; word-wrap: normal; direction: ltr; -webkit-font-smoothing: antialiased; }
     .notranslate { }
+    .VfPpkd-kBDsod { font-family: 'Material Symbols Outlined'; font-size: 24px; line-height: 1; font-weight: normal; }
+    .XjoK4b { display: none; }
+    .UTNHae { display: none; }
+    .pYTkkf-Bz112c-RLmnJb { display: none; }
+    .pYTkkf-Bz112c-UHGRz { display: none; }
+    .pYTkkf-Bz112c-kBDsod-Rtc0Jf { pointer-events: none; }
 
-    /* ---- COURSE CARD ---- */
+    /* ---- SIDE DRAWER / NAV ---- */
+    .ZYus1c { bottom: 0; left: 0; pointer-events: none; position: fixed; top: 0; z-index: 980; }
+    .lATaOd { display: flex; height: 0; position: relative; }
+    .aBPWdf { width: 18.75rem; flex: 0 0 18.75rem; }
+    .g0zrjc { fill: var(--gm3-sys-color-surface-container-low, #f8fafd); height: 32px; position: relative; right: 0; top: 0; width: 32px; }
+    .bCXrPe { display: none; }
+    .Idogi { height: 3rem; margin-top: -.0625rem; transform: none; transition: transform .24s cubic-bezier(.4,0,.2,1); }
+    .KEDCCd { display: flex; justify-content: space-between; }
+    .TeZa2e { overflow: hidden; }
+    .xHPsid { display: flex; margin: 0 .75rem; max-width: 100%; white-space: nowrap; }
+    .YJHsie { display: flex; margin-right: .75rem; }
+    .QRiHXd { align-items: center; display: flex; flex-direction: row; }
+
+    /* ---- COURSE CARD (本物の構造) ---- */
     .gHz6xd {
       background-clip: padding-box;
       display: flex; flex-direction: column;
@@ -92,10 +116,12 @@
       transition: box-shadow .2s;
     }
     .riU7le:hover { box-shadow: 0 2px 8px rgba(0,0,0,.15); }
+    .rZXyy { }
     .Tc9hUd { min-height: 6.25rem; position: relative; }
     .O7utsb { height: 100%; left: 0; position: absolute; top: 0; width: 100%; }
     .lmPo4 { background-color: rgb(23,78,166); }
     .OjOEXb { background-repeat: no-repeat; background-size: cover; }
+    .Gf8MK { transform: scaleX(-1); }
     .ZizeYd { opacity: .7; }
     .qm64Ve {
       background: linear-gradient(60deg, rgba(0,0,0,0) 60%, rgba(0,0,0,.7));
@@ -119,23 +145,33 @@
       font-size: .875rem; font-weight: 500; letter-spacing: 0; line-height: 1.25rem;
       color: var(--gm3-sys-color-on-primary, #fff);
     }
+    .jJIbcc { }
     .T30lh {
       font-family: Google Sans,Roboto,Arial,sans-serif;
       font-size: .75rem; font-weight: 400; letter-spacing: .00625rem; line-height: 1rem;
       color: var(--gm3-sys-color-on-primary, #fff);
     }
-    .prWPdf { display: flex; }
+    .lJv9ke { flex: 0 0 4.6875rem; }
+    .TQYOZc { display: none; } /* 教師アイコン - 非表示 */
+    .PNzAWd { border-radius: 50%; float: right; height: 4.5rem; margin-top: -3.25rem; position: relative; width: 4.5rem; }
+    .xo2x2e { display: block; }
     .AX2up {
       font-family: Google Sans,Roboto,Arial,sans-serif;
       font-size: .75rem; font-weight: 400; letter-spacing: .00625rem; line-height: 1rem;
       color: var(--gm3-sys-color-on-surface, #1f1f1f);
       padding: .75rem 1rem;
     }
+    .Y5vSD { display: block; }
+    .nforOe { display: none; }
     .SZ0kZe { display: flex; flex-shrink: 0; justify-content: flex-end; padding: .25rem .5rem; border-top: .0625rem solid var(--gm3-sys-color-outline-variant, #c4c7c5); }
+    .prWPdf { display: flex; }
     .Vu2fZd { text-overflow: ellipsis; overflow: hidden; white-space: nowrap; display: block; }
+    .z07MGc { }
     .slDfNd { text-decoration: none; color: inherit; }
+    .ZmqAt { height: 100%; left: 0; position: absolute; top: 0; width: 100%; }
 
     /* ---- DRAWER COURSE LIST ---- */
+    .uTwgne { text-decoration: none; }
     .GRvzhf {
       font-family: Google Sans,Roboto,Arial,sans-serif;
       font-size: .875rem; font-weight: 500; letter-spacing: 0; line-height: 1.25rem;
@@ -145,14 +181,44 @@
     .kWQ5wd { display: flex; align-items: center; justify-content: center; flex-shrink: 0; width: 2.5rem; height: 2.5rem; }
     .JShLh { border-radius: 50%; color: #fff; fill: #fff; flex-shrink: 0; height: 1.5rem; text-align: center; width: 1.5rem; display: flex; align-items: center; justify-content: center; font-size: .75rem; font-weight: 600; }
     .TGnLfc { color: #fff; text-transform: uppercase; }
+    .VjRxGc { font-family: Google Sans,Roboto,Arial,sans-serif; font-size: .875rem; font-weight: 500; letter-spacing: 0; line-height: 1.25rem; color: var(--gm3-sys-color-on-surface, #1f1f1f); }
+    .FeltXd { color: rgb(23,78,166); fill: rgb(23,78,166); }
+    .uUMf4c { background-color: rgb(232,240,254); }
     .Ij01W { margin-left: .75rem; flex: 1; min-width: 0; }
+    .NsMoi { border-radius: 50%; bottom: 0; height: 300%; left: -100%; position: absolute; top: -100%; right: 0; width: 300%; }
+    .pzaVke { z-index: -1; position: absolute; inset: 0; overflow: hidden; }
+    .NJyEeb { display: block; }
+    .npdi5 { display: flex; align-items: center; justify-content: center; width: 2.5rem; height: 2.5rem; }
 
-    /* ===== 独自レイアウト ===== */
+    /* ---- THEME COLORS (各コースのテーマ色) ---- */
+    .CNpREd.ee1HBc .uUMf4c  { background-color: rgb(232,240,254); }
+    .CNpREd.ee1HBc .JShLh   { background-color: rgb(66,133,244); }
+    .CNpREd.ee1HBc .lmPo4   { background-color: rgb(25,103,210); }
+    .CNpREd.g2MItd .JShLh   { background-color: rgb(52,168,83); }
+    .CNpREd.g2MItd .lmPo4   { background-color: rgb(30,132,73); }
+    .CNpREd.zvzLKc .JShLh   { background-color: rgb(234,67,53); }
+    .CNpREd.zvzLKc .lmPo4   { background-color: rgb(197,34,31); }
+    .CNpREd.UvHKof .JShLh   { background-color: rgb(251,188,5); }
+    .CNpREd.UvHKof .lmPo4   { background-color: rgb(232,152,0); }
+    .CNpREd.Ag4wUb .JShLh   { background-color: rgb(25,103,210); }
+    .CNpREd.Ag4wUb .lmPo4   { background-color: rgb(23,78,166); }
+
+    /* カードヘッダーのテーマ背景色 */
+    .CNpREd.ee1HBc .O7utsb { background-color: rgb(66,133,244); }
+    .CNpREd.g2MItd .O7utsb { background-color: rgb(52,168,83); }
+    .CNpREd.zvzLKc .O7utsb { background-color: rgb(234,67,53); }
+    .CNpREd.UvHKof .O7utsb { background-color: rgb(251,188,5); }
+    .CNpREd.Ag4wUb .O7utsb { background-color: rgb(25,103,210); }
+
+    /* ===== 独自レイアウト (Classroomのレイアウト補完) ===== */
+
+    /* メインコンテンツ */
     .app-main {
       margin-top: 4rem;
       min-height: calc(100vh - 4rem);
     }
 
+    /* ドロワーオーバーレイ */
     .drawer-overlay {
       display: none;
       position: fixed; inset: 0;
@@ -161,6 +227,7 @@
     }
     .drawer-overlay.open { display: block; }
 
+    /* サイドドロワー本体 */
     .side-drawer {
       position: fixed;
       top: 0; left: 0; bottom: 0;
@@ -177,6 +244,7 @@
       box-shadow: 4px 0 16px rgba(0,0,0,.15);
     }
 
+    /* ドロワーヘッダー */
     .drawer-topbar {
       height: 4rem;
       display: flex; align-items: center;
@@ -184,6 +252,7 @@
       gap: .5rem;
     }
 
+    /* ドロワーナビアイテム */
     .drawer-nav-item {
       display: flex; align-items: center;
       height: 3rem;
@@ -224,6 +293,7 @@
       font-family: Google Sans,Roboto,Arial,sans-serif;
       font-size: .75rem; font-weight: 700;
       color: var(--gm3-sys-color-on-surface-variant, #444746);
+      text-transform: none;
       letter-spacing: .5px;
     }
 
@@ -235,9 +305,11 @@
       padding: 1.5rem;
     }
 
+    /* ===== ビュー切り替え ===== */
     .gc-view { display: none; }
     .gc-view.active { display: block; }
 
+    /* ===== ストリーム・課題ビュー ===== */
     .stream-container {
       max-width: 62rem;
       margin: 0 auto;
@@ -274,76 +346,92 @@
     }
 
     /* ストリームカード */
-    .stream-card-real {
+    .stream-card {
       background: var(--gm3-sys-color-surface, #fff);
       border-radius: .5rem;
       border: .0625rem solid var(--gm3-sys-color-outline-variant, #c4c7c5);
       margin-bottom: 1rem;
       overflow: hidden;
       transition: box-shadow .2s;
-      cursor: default;
     }
-    .stream-card-real:hover { box-shadow: 0 1px 3px rgba(0,0,0,.12); }
-    .stream-card-real .card-top {
+    .stream-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,.12); }
+
+    .stream-card-top {
       display: flex; align-items: flex-start;
-      padding: 1rem;
+      padding: 1rem 1rem .5rem;
+      gap: .75rem;
     }
-    .stream-card-real .card-body {
-      padding: 0 1rem .75rem calc(1rem + 2.5rem + .75rem);
-      font-size: .875rem; line-height: 1.5;
-      color: var(--gm3-sys-color-on-surface-variant, #444746);
-    }
-    .stream-card-real .card-footer {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: .5rem 1rem .5rem calc(1rem + 2.5rem + .75rem);
-      border-top: .0625rem solid var(--gm3-sys-color-outline-variant, #c4c7c5);
-      min-height: 3rem;
-    }
-    .JZicYb {
-      display: flex; align-items: flex-start; justify-content: flex-start;
-      flex-shrink: 0; margin-right: .75rem;
-    }
-    .Cxyznd.IqHgie {
+    .stream-card-icon {
       width: 2.5rem; height: 2.5rem;
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
       flex-shrink: 0;
       font-family: 'Material Symbols Outlined'; font-size: 20px;
     }
-    .GQW44b { flex: 1; min-width: 0; }
-    .QUEiXc { display: flex; align-items: flex-start; justify-content: space-between; }
-    .QUEiXc h2 { flex: 1; min-width: 0; font-size: 1rem; font-weight: 400; line-height: 1.4; }
-    .jzdBjc {
-      font-family: Google Sans,Roboto,Arial,sans-serif;
-      font-size: .875rem; font-weight: 500; line-height: 1.4;
-      color: var(--gm3-sys-color-on-surface, #1f1f1f);
-      cursor: pointer;
-    }
-    .jzdBjc:hover { color: #1a73e8; }
-    .JZk9qf {
-      font-size: .75rem; line-height: 1rem;
+    .stream-card-icon.assignment { background: #e8f0fe; color: #1a73e8; }
+    .stream-card-icon.announcement { background: #fce8e6; color: #d93025; }
+    .stream-card-meta { flex: 1; min-width: 0; }
+    .stream-card-course {
+      font-size: .75rem; font-weight: 500;
       color: var(--gm3-sys-color-on-surface-variant, #444746);
-      flex-shrink: 0; margin-left: .5rem; white-space: nowrap;
-      align-self: flex-start; padding-top: .125rem;
+      margin-bottom: .125rem;
     }
-    .VjRxGc {
+    .stream-card-title {
       font-family: Google Sans,Roboto,Arial,sans-serif;
-      font-size: .875rem; font-weight: 500; letter-spacing: 0; line-height: 1.25rem;
+      font-size: 1rem; font-weight: 500;
       color: var(--gm3-sys-color-on-surface, #1f1f1f);
-      margin-top: .125rem;
+      cursor: pointer; line-height: 1.3;
     }
-    .deadline-badge {
-      display: inline-flex; align-items: center; gap: .2rem;
+    .stream-card-title:hover { color: #1a73e8; }
+    .stream-card-time {
+      font-size: .75rem;
+      color: var(--gm3-sys-color-on-surface-variant, #444746);
+      margin-top: .25rem;
+    }
+    .stream-card-body {
+      padding: .5rem 1rem .75rem 4.25rem;
+      font-size: .875rem;
+      color: var(--gm3-sys-color-on-surface-variant, #444746);
+      line-height: 1.5;
+    }
+    .stream-card-actions {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: .5rem 1rem .5rem 4.25rem;
+      border-top: .0625rem solid var(--gm3-sys-color-outline-variant, #c4c7c5);
+    }
+    .stream-due {
+      display: flex; align-items: center; gap: .25rem;
       font-size: .75rem; color: var(--gm3-sys-color-on-surface-variant, #444746);
+      font-family: 'Material Symbols Outlined', Roboto, sans-serif;
     }
-    .deadline-badge .mat-icon { font-family: 'Material Symbols Outlined'; font-size: 14px; }
-    .deadline-badge.urgent { color: #d93025; }
-    .deadline-badge.soon   { color: #e37400; }
+    .stream-due .icon { font-family: 'Material Symbols Outlined'; font-size: 16px; }
+    .stream-due.urgent { color: #d93025; }
+    .stream-due.soon   { color: #e37400; }
 
-    /* ===== 課題ページ ===== */
+    .open-link {
+      display: inline-flex; align-items: center; gap: .25rem;
+      font-size: .875rem; font-weight: 500; font-family: Google Sans,Roboto,Arial,sans-serif;
+      color: #1a73e8; text-decoration: none;
+      padding: .375rem .75rem;
+      border-radius: .25rem;
+      transition: background .15s;
+    }
+    .open-link:hover { background: #e8f0fe; }
+    .open-link .icon { font-family: 'Material Symbols Outlined'; font-size: 16px; }
+
+    /* ===== 課題ページ (Classwork) ===== */
     .classwork-container {
       max-width: 55rem; margin: 0 auto; padding: 1.5rem;
     }
+
+    .classwork-page-header {
+      display: flex; align-items: center; gap: .75rem; margin-bottom: 1.5rem;
+    }
+    .classwork-page-title {
+      font-family: Google Sans,Roboto,Arial,sans-serif;
+      font-size: 1.375rem; font-weight: 400;
+    }
+
     .topic-section { margin-bottom: 1rem; }
     .topic-header {
       display: flex; align-items: center;
@@ -362,11 +450,13 @@
       transition: transform .2s;
     }
     .topic-header.collapsed .topic-chevron { transform: rotate(-90deg); }
+
     .work-list {
       background: var(--gm3-sys-color-surface, #fff);
       border-radius: 0 0 .5rem .5rem;
       overflow: hidden;
     }
+
     .work-item {
       display: flex; align-items: center;
       padding: .75rem 1rem;
@@ -376,6 +466,7 @@
     }
     .work-item:last-child { border-bottom: none; }
     .work-item:hover { background: #f8f9fa; }
+
     .work-item-icon {
       width: 2.5rem; height: 2.5rem; border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
@@ -402,6 +493,7 @@
     .work-item-due .icon { font-family: 'Material Symbols Outlined'; font-size: 14px; }
     .work-item-due.urgent { color: #d93025; }
     .work-item-due.soon   { color: #e37400; }
+
     .subject-pill {
       display: inline-flex; align-items: center;
       height: 1.25rem; padding: 0 .5rem;
@@ -413,6 +505,8 @@
       display: flex; align-items: center; gap: .5rem;
       flex-shrink: 0; margin-left: .5rem;
     }
+
+    /* 丸チェックボタン */
     .check-btn {
       width: 2.25rem; height: 2.25rem;
       border-radius: 50%; border: 2px solid var(--gm3-sys-color-outline-variant, #c4c7c5);
@@ -452,6 +546,7 @@
     }
     .filter-chip:hover:not(.active) { background: var(--gm3-sys-color-surface-container, #f0f4f9); }
     .filter-chip .icon { font-family: 'Material Symbols Outlined'; font-size: 16px; }
+
     .todo-date-label {
       font-size: .6875rem; font-weight: 700; letter-spacing: .8px;
       color: var(--gm3-sys-color-on-surface-variant, #444746);
@@ -565,7 +660,7 @@
     .empty-state h3 { font-family: Google Sans,Roboto,Arial,sans-serif; font-size: 1.25rem; font-weight: 400; }
     .empty-state p  { font-size: .875rem; max-width: 20rem; }
 
-    /* ===== 更新バナー ===== */
+    /* ===== 更新バナー（Classroomの「ストリームを更新しました」）===== */
     .update-banner {
       position: fixed;
       top: 4.5rem;
@@ -612,7 +707,93 @@
     }
     .snackbar.show { transform: translateX(-50%) translateY(0); opacity: 1; }
 
-    /* ===== ストリームレイアウト ===== */
+    /* ===== 本物のClassroomストリームカード構造 ===== */
+    /* JZicYb: アイコンコンテナ */
+    .JZicYb {
+      display: flex; align-items: flex-start; justify-content: flex-start;
+      flex-shrink: 0; margin-right: .75rem;
+    }
+    /* Cxyznd IqHgie: アイコン円 */
+    .Cxyznd.IqHgie {
+      width: 2.5rem; height: 2.5rem;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      font-family: 'Material Symbols Outlined'; font-size: 20px;
+    }
+    /* GQW44b: カード右コンテンツ */
+    .GQW44b { flex: 1; min-width: 0; }
+    /* QUEiXc: タイトル行コンテナ */
+    .QUEiXc { display: flex; align-items: flex-start; justify-content: space-between; }
+    .QUEiXc h2 { flex: 1; min-width: 0; font-size: 1rem; font-weight: 400; line-height: 1.4; }
+    /* jzdBjc: カードタイトル */
+    .jzdBjc {
+      font-family: Google Sans,Roboto,Arial,sans-serif;
+      font-size: .875rem; font-weight: 500; line-height: 1.4;
+      color: var(--gm3-sys-color-on-surface, #1f1f1f);
+      cursor: pointer;
+    }
+    .jzdBjc:hover { color: #1a73e8; }
+    /* JZk9qf: 日付 */
+    .JZk9qf {
+      font-size: .75rem; line-height: 1rem;
+      color: var(--gm3-sys-color-on-surface-variant, #444746);
+      flex-shrink: 0; margin-left: .5rem; white-space: nowrap;
+      align-self: flex-start; padding-top: .125rem;
+    }
+    /* Kxv4bd: カード全体のpadding */
+    .Kxv4bd {
+      padding: 1rem;
+    }
+    /* 本物のstreamカード */
+    .stream-card-real {
+      background: var(--gm3-sys-color-surface, #fff);
+      border-radius: .5rem;
+      border: .0625rem solid var(--gm3-sys-color-outline-variant, #c4c7c5);
+      margin-bottom: 1rem;
+      overflow: hidden;
+      transition: box-shadow .2s;
+      cursor: default;
+    }
+    .stream-card-real:hover { box-shadow: 0 1px 3px rgba(0,0,0,.12); }
+    .stream-card-real .card-top {
+      display: flex; align-items: flex-start;
+      padding: 1rem;
+    }
+    .stream-card-real .card-body {
+      padding: 0 1rem .75rem calc(1rem + 2.5rem + .75rem);
+      font-size: .875rem; line-height: 1.5;
+      color: var(--gm3-sys-color-on-surface-variant, #444746);
+    }
+    .stream-card-real .card-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: .5rem 1rem .5rem calc(1rem + 2.5rem + .75rem);
+      border-top: .0625rem solid var(--gm3-sys-color-outline-variant, #c4c7c5);
+      min-height: 3rem;
+    }
+    /* VjRxGc: 「〇〇さんが新しい課題を投稿しました」 */
+    .VjRxGc {
+      font-family: Google Sans,Roboto,Arial,sans-serif;
+      font-size: .875rem; font-weight: 500; letter-spacing: 0; line-height: 1.25rem;
+      color: var(--gm3-sys-color-on-surface, #1f1f1f);
+      margin-top: .125rem;
+    }
+    /* ストリームのコース名ラベル */
+    .stream-course-label {
+      font-size: .6875rem; font-weight: 500;
+      color: var(--gm3-sys-color-on-surface-variant, #444746);
+      margin-bottom: .125rem;
+    }
+    /* deadline badge */
+    .deadline-badge {
+      display: inline-flex; align-items: center; gap: .2rem;
+      font-size: .75rem; color: var(--gm3-sys-color-on-surface-variant, #444746);
+    }
+    .deadline-badge .mat-icon { font-family: 'Material Symbols Outlined'; font-size: 14px; }
+    .deadline-badge.urgent { color: #d93025; }
+    .deadline-badge.soon   { color: #e37400; }
+
+    /* ===== コースストリームページのレイアウト（サイドバー付き） ===== */
     .stream-layout {
       display: flex;
       gap: 1.5rem;
@@ -622,7 +803,9 @@
       align-items: flex-start;
     }
     .stream-main { flex: 1; min-width: 0; }
-    .stream-sidebar { width: 16rem; flex-shrink: 0; }
+    .stream-sidebar {
+      width: 16rem; flex-shrink: 0;
+    }
     .sidebar-card {
       background: var(--gm3-sys-color-surface, #fff);
       border-radius: .5rem;
@@ -669,8 +852,12 @@
     .sidebar-upcoming-due.urgent { color: #d93025; }
     .sidebar-upcoming-due.soon   { color: #e37400; }
     .sidebar-upcoming-due .mat-icon { font-family: 'Material Symbols Outlined'; font-size: 14px; }
+    @media (max-width: 768px) {
+      .stream-layout { flex-direction: column; }
+      .stream-sidebar { width: 100%; }
+    }
 
-    /* ===== タブバー ===== */
+    /* ===== タブバー（ストリーム/授業切り替え） ===== */
     .course-tabs {
       display: flex;
       background: var(--gm3-sys-color-surface, #fff);
@@ -690,65 +877,7 @@
     .course-tab.active { color: #1a73e8; border-bottom-color: #1a73e8; }
     .course-tab:hover:not(.active) { background: rgba(26,115,232,.06); }
 
-    /* ===== ログイン画面 ===== */
-    #login-screen {
-      display: flex; align-items: center; justify-content: center;
-      min-height: 100vh;
-      background: var(--gm3-sys-color-surface-container-low, #f8fafd);
-    }
-    .login-card {
-      background: #fff;
-      border-radius: .75rem;
-      border: .0625rem solid var(--gm3-sys-color-outline-variant, #c4c7c5);
-      padding: 2.5rem;
-      text-align: center;
-      width: 90%; max-width: 22rem;
-      box-shadow: 0 4px 16px rgba(0,0,0,.08);
-    }
-    .login-logo {
-      display: flex; align-items: center; justify-content: center; gap: .5rem;
-      margin-bottom: 1.5rem;
-    }
-    .login-logo img { height: 2rem; }
-    .login-logo span {
-      font-family: Google Sans,Roboto,Arial,sans-serif;
-      font-size: 1.5rem; font-weight: 400;
-      color: var(--gm3-sys-color-on-surface-variant, #444746);
-    }
-    .login-title {
-      font-family: Google Sans,Roboto,Arial,sans-serif;
-      font-size: 1.25rem; font-weight: 400;
-      color: var(--gm3-sys-color-on-surface, #1f1f1f);
-      margin-bottom: .5rem;
-    }
-    .login-subtitle {
-      font-size: .875rem;
-      color: var(--gm3-sys-color-on-surface-variant, #444746);
-      margin-bottom: 2rem;
-      line-height: 1.5;
-    }
-    .login-btn {
-      display: flex; align-items: center; justify-content: center; gap: .75rem;
-      width: 100%; height: 2.5rem; padding: 0 1.5rem;
-      border-radius: .25rem; border: .0625rem solid var(--gm3-sys-color-outline-variant, #c4c7c5);
-      background: #fff; cursor: pointer;
-      font-family: Roboto,sans-serif; font-size: .875rem; font-weight: 500;
-      color: var(--gm3-sys-color-on-surface, #1f1f1f);
-      transition: background .15s, box-shadow .15s;
-    }
-    .login-btn:hover { background: #f8f9fa; box-shadow: 0 1px 4px rgba(0,0,0,.15); }
-    .login-btn svg { width: 1.125rem; height: 1.125rem; flex-shrink: 0; }
-    .login-error {
-      font-size: .8125rem; color: #d93025; margin-top: 1rem;
-      display: none;
-    }
-    .login-error.show { display: block; }
-
     /* ===== モバイル ===== */
-    @media (max-width: 768px) {
-      .stream-layout { flex-direction: column; }
-      .stream-sidebar { width: 100%; }
-    }
     @media (max-width: 600px) {
       .courses-grid { padding: 1rem; gap: .75rem; }
       .gHz6xd { width: 100%; }
@@ -763,134 +892,115 @@
 </head>
 <body>
 
-<!-- ===== ログイン画面 ===== -->
-<div id="login-screen">
-  <div class="login-card">
-    <div class="login-logo">
-      <img src="https://www.gstatic.com/classroom/logo_square_rounded.svg" alt="Classroom">
-      <span>Classroom</span>
+<!-- ===== 更新バナー ===== -->
+<div class="update-banner" id="update-banner" onclick="applyUpdate()">
+  <span class="mat-icon">refresh</span>
+  <span id="update-banner-text">新しい投稿があります</span>
+</div>
+
+<!-- ===== Snackbar ===== -->
+<div class="snackbar" id="snackbar"></div>
+
+<!-- ===== TOP NAV BAR ===== -->
+<nav class="joJglb" id="kO001e" role="navigation">
+  <div class="gmNu1d XIpEib">
+    <!-- ハンバーガーボタン -->
+    <div class="k43Owe">
+      <button class="pYTkkf-Bz112c-LgbsSe ykp8pd oxacD" onclick="toggleDrawer()" aria-label="メインメニュー">
+        <span class="quRWN-Bz112c notranslate">menu</span>
+      </button>
     </div>
-    <div class="login-title">72期E組</div>
-    <div class="login-subtitle">学校のGoogleアカウント<br>（@gakugei-hs.info）でログインしてください</div>
-    <button class="login-btn" onclick="startLogin()">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-        <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-        <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
-        <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
-      </svg>
-      Googleでログイン
+    <!-- Classroomロゴ -->
+    <div class="Hwv4mb rIyhE">
+      <a class="slDfNd gmNu1d cGvavf" href="#" onclick="showView('home');return false;" style="text-decoration:none;">
+        <img src="https://www.gstatic.com/classroom/logo_square_rounded.svg" class="UAJaRc" alt="Google Classroom">
+        <span class="y183Ub FkiMUb">Classroom</span>
+      </a>
+    </div>
+    <!-- 右側アクション -->
+    <div class="gmNu1d PYWmSe" style="margin-left:auto;gap:.25rem;">
+      <button class="pYTkkf-Bz112c-LgbsSe ykp8pd" onclick="refreshCurrent()" title="更新">
+        <span class="quRWN-Bz112c notranslate">refresh</span>
+      </button>
+      <div id="user-avatar" onclick="toggleDrawer()" style="
+        width:2rem;height:2rem;border-radius:50%;background:#1a73e8;color:#fff;
+        font-size:.875rem;font-weight:600;display:flex;align-items:center;justify-content:center;
+        cursor:pointer;user-select:none;flex-shrink:0;
+      ">S</div>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== DRAWER OVERLAY ===== -->
+<div class="drawer-overlay" id="drawer-overlay" onclick="closeDrawer()"></div>
+
+<!-- ===== SIDE DRAWER ===== -->
+<div class="side-drawer" id="side-drawer">
+  <div class="drawer-topbar">
+    <button class="pYTkkf-Bz112c-LgbsSe ykp8pd oxacD" onclick="closeDrawer()">
+      <span class="quRWN-Bz112c notranslate">menu</span>
     </button>
-    <div class="login-error" id="login-error"></div>
+    <a class="slDfNd gmNu1d" href="#" onclick="showView('home');closeDrawer();return false;" style="text-decoration:none;gap:.375rem;margin-left:.25rem;">
+      <img src="https://www.gstatic.com/classroom/logo_square_rounded.svg" style="height:28px;" alt="">
+      <span class="y183Ub" style="margin-left:.375rem;">Classroom</span>
+    </a>
+  </div>
+
+  <div id="drawer-nav">
+    <a class="drawer-nav-item active" id="drawer-home" href="#" onclick="showView('home');closeDrawer();return false;">
+      <span class="drawer-nav-item-icon notranslate">home</span>
+      <span class="drawer-nav-item-label">ホーム</span>
+    </a>
+    <a class="drawer-nav-item" id="drawer-todo" href="#" onclick="showView('todo');closeDrawer();return false;">
+      <span class="drawer-nav-item-icon notranslate">check_circle</span>
+      <span class="drawer-nav-item-label">To-do</span>
+    </a>
+    <hr class="drawer-divider">
+    <div class="drawer-section-label">登録済みのクラス</div>
+    <div id="drawer-courses"></div>
   </div>
 </div>
 
-<!-- ===== アプリ本体（ログイン後に表示）===== -->
-<div id="app" style="display:none;">
+<!-- ===== MAIN CONTENT ===== -->
+<main class="app-main">
 
-  <!-- 更新バナー -->
-  <div class="update-banner" id="update-banner" onclick="applyUpdate()">
-    <span class="mat-icon">refresh</span>
-    <span id="update-banner-text">新しい投稿があります</span>
-  </div>
-
-  <!-- Snackbar -->
-  <div class="snackbar" id="snackbar"></div>
-
-  <!-- TOP NAV BAR -->
-  <nav class="joJglb" id="kO001e" role="navigation">
-    <div class="gmNu1d XIpEib">
-      <div class="k43Owe">
-        <button class="pYTkkf-Bz112c-LgbsSe ykp8pd oxacD" onclick="toggleDrawer()" aria-label="メインメニュー">
-          <span class="quRWN-Bz112c notranslate">menu</span>
-        </button>
-      </div>
-      <div class="Hwv4mb rIyhE">
-        <a class="slDfNd gmNu1d cGvavf" href="#" onclick="showView('home');return false;" style="text-decoration:none;">
-          <img src="https://www.gstatic.com/classroom/logo_square_rounded.svg" class="UAJaRc" alt="Google Classroom">
-          <span class="y183Ub FkiMUb">Classroom</span>
-        </a>
-      </div>
-      <div class="gmNu1d PYWmSe" style="margin-left:auto;gap:.25rem;">
-        <button class="pYTkkf-Bz112c-LgbsSe ykp8pd" onclick="refreshCurrent()" title="更新">
-          <span class="quRWN-Bz112c notranslate">refresh</span>
-        </button>
-        <div id="user-avatar" style="
-          width:2rem;height:2rem;border-radius:50%;background:#1a73e8;color:#fff;
-          font-size:.875rem;font-weight:600;display:flex;align-items:center;justify-content:center;
-          cursor:pointer;user-select:none;flex-shrink:0;
-        " title="ログアウト" onclick="confirmLogout()">S</div>
-      </div>
-    </div>
-  </nav>
-
-  <!-- DRAWER OVERLAY -->
-  <div class="drawer-overlay" id="drawer-overlay" onclick="closeDrawer()"></div>
-
-  <!-- SIDE DRAWER -->
-  <div class="side-drawer" id="side-drawer">
-    <div class="drawer-topbar">
-      <button class="pYTkkf-Bz112c-LgbsSe ykp8pd oxacD" onclick="closeDrawer()">
-        <span class="quRWN-Bz112c notranslate">menu</span>
-      </button>
-      <a class="slDfNd gmNu1d" href="#" onclick="showView('home');closeDrawer();return false;" style="text-decoration:none;gap:.375rem;margin-left:.25rem;">
-        <img src="https://www.gstatic.com/classroom/logo_square_rounded.svg" style="height:28px;" alt="">
-        <span class="y183Ub" style="margin-left:.375rem;">Classroom</span>
-      </a>
-    </div>
-    <div id="drawer-nav">
-      <a class="drawer-nav-item active" id="drawer-home" href="#" onclick="showView('home');closeDrawer();return false;">
-        <span class="drawer-nav-item-icon notranslate">home</span>
-        <span class="drawer-nav-item-label">ホーム</span>
-      </a>
-      <a class="drawer-nav-item" id="drawer-todo" href="#" onclick="showView('todo');closeDrawer();return false;">
-        <span class="drawer-nav-item-icon notranslate">check_circle</span>
-        <span class="drawer-nav-item-label">To-do</span>
-      </a>
-      <hr class="drawer-divider">
-      <div class="drawer-section-label">登録済みのクラス</div>
-      <div id="drawer-courses"></div>
-      <hr class="drawer-divider">
-      <a class="drawer-nav-item" href="#" onclick="confirmLogout();closeDrawer();return false;">
-        <span class="drawer-nav-item-icon notranslate">logout</span>
-        <span class="drawer-nav-item-label">ログアウト</span>
-      </a>
+  <!-- HOME: コース一覧 -->
+  <div class="gc-view active" id="view-home">
+    <div id="home-content" class="loading-state">
+      <div class="spinner"></div>
     </div>
   </div>
 
-  <!-- MAIN CONTENT -->
-  <main class="app-main">
-    <div class="gc-view active" id="view-home">
-      <div id="home-content" class="loading-state">
+  <!-- STREAM: コースストリーム -->
+  <div class="gc-view" id="view-stream">
+    <div class="stream-container">
+      <div id="stream-content" class="loading-state">
         <div class="spinner"></div>
       </div>
     </div>
-    <div class="gc-view" id="view-stream">
-      <div class="stream-container">
-        <div id="stream-content" class="loading-state">
-          <div class="spinner"></div>
-        </div>
-      </div>
-    </div>
-    <div class="gc-view" id="view-classwork">
-      <div class="classwork-container">
-        <div id="classwork-content" class="loading-state">
-          <div class="spinner"></div>
-        </div>
-      </div>
-    </div>
-    <div class="gc-view" id="view-todo">
-      <div class="todo-container">
-        <div id="todo-content" class="loading-state">
-          <div class="spinner"></div>
-        </div>
-      </div>
-    </div>
-  </main>
+  </div>
 
-</div><!-- /#app -->
+  <!-- CLASSWORK: 課題一覧 -->
+  <div class="gc-view" id="view-classwork">
+    <div class="classwork-container">
+      <div id="classwork-content" class="loading-state">
+        <div class="spinner"></div>
+      </div>
+    </div>
+  </div>
 
-<!-- 詳細モーダル -->
+  <!-- TODO: To-doリスト -->
+  <div class="gc-view" id="view-todo">
+    <div class="todo-container">
+      <div id="todo-content" class="loading-state">
+        <div class="spinner"></div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- ===== 詳細モーダル ===== -->
 <div class="detail-overlay" id="detail-overlay" onclick="closeDetail(event)">
   <div class="detail-modal" onclick="event.stopPropagation()">
     <div class="detail-header">
@@ -927,138 +1037,39 @@
   </div>
 </div>
 
+<!-- ===== JavaScript ===== -->
 <script>
 'use strict';
 
-// ============================================================
-//  設定
-// ============================================================
-const GAS_ENDPOINT  = 'https://script.google.com/macros/s/AKfycbzwe-hIThstFUbhUQlsy6WoNmTpShPnYmbdSI0vXYCAgzNYQOomGbVWJ0kHCbTmLkLw/exec';
-const CLIENT_ID     = '511963964147-lmq62r9fsltr7ue8pasf5dni19cb4vpb.apps.googleusercontent.com';
-const ORIGIN        = location.origin; // GitHub Pagesのorigin
-const SCOPES        = [
-  'https://www.googleapis.com/auth/classroom.courses.readonly',
-  'https://www.googleapis.com/auth/classroom.coursework.me.readonly',
-  'https://www.googleapis.com/auth/classroom.announcements.readonly',
-  'https://www.googleapis.com/auth/classroom.courseworkmaterials.readonly',
-  'email',
-  'profile',
-].join(' ');
+/* ========== API ========== */
+const userEmail = '<?= userEmail ?>';
 
-// ============================================================
-//  認証
-// ============================================================
-let _token     = null;
-let _expiry    = 0;
-let userEmail  = '';
-
-function isTokenValid() {
-  return _token && Date.now() < _expiry - 60000; // 1分前に期限切れ扱い
-}
-
-function startLogin() {
-  const authUrl =
-    'https://accounts.google.com/o/oauth2/v2/auth' +
-    '?client_id=' + encodeURIComponent(CLIENT_ID) +
-    '&redirect_uri=' + encodeURIComponent(ORIGIN + '/classroom/auth.html') +
-    '&response_type=token' +
-    '&scope=' + encodeURIComponent(SCOPES) +
-    '&prompt=select_account';
-
-  const popup = window.open(authUrl, 'gc_auth', 'width=500,height=650,left=200,top=100');
-  if (!popup) {
-    // ポップアップブロックされた場合はリダイレクト
-    window.location.href = authUrl;
-    return;
-  }
-
-  // ポップアップからのメッセージを待つ
-  window.addEventListener('message', async function onMsg(e) {
-    if (e.origin !== ORIGIN) return;
-    if (!e.data || e.data.type !== 'GC_AUTH_SUCCESS') return;
-    window.removeEventListener('message', onMsg);
-    _token  = e.data.token;
-    _expiry = Number(e.data.expiry);
-    sessionStorage.setItem('gc_access_token', _token);
-    sessionStorage.setItem('gc_token_expiry', String(_expiry));
-    localStorage.setItem('gc_access_token', _token);
-    localStorage.setItem('gc_token_expiry', String(_expiry));
-    // emailをtokeninfoから取得してlocalStorageに保存
-    try {
-      const infoRes = await fetch(
-        'https://www.googleapis.com/oauth2/v3/tokeninfo?access_token=' + encodeURIComponent(_token)
-      );
-      const info = await infoRes.json();
-      userEmail = info.email || '';
-      if (userEmail) localStorage.setItem('gc_user_email', userEmail);
-    } catch(_) {}
-    initApp();
-  }, false);
-}
-
-function tryRestoreToken() {
-  // sessionStorage と localStorage の両方を試す（リロード耐性のため）
-  let t = sessionStorage.getItem('gc_access_token') || localStorage.getItem('gc_access_token');
-  let e = Number(sessionStorage.getItem('gc_token_expiry') || localStorage.getItem('gc_token_expiry') || '0');
-  if (t && Date.now() < e - 60000) {
-    _token  = t;
-    _expiry = e;
-    // emailも復元
-    userEmail = localStorage.getItem('gc_user_email') || '';
-    return true;
-  }
-  return false;
-}
-
-function confirmLogout() {
-  if (!confirm('ログアウトしますか？')) return;
-  _token = null; _expiry = 0; userEmail = '';
-  sessionStorage.removeItem('gc_access_token');
-  sessionStorage.removeItem('gc_token_expiry');
-  localStorage.removeItem('gc_access_token');
-  localStorage.removeItem('gc_token_expiry');
-  localStorage.removeItem('gc_user_email');
-  stopPolling();
-  document.getElementById('app').style.display = 'none';
-  document.getElementById('login-screen').style.display = 'flex';
-  showLoginError('');
-}
-
-function showLoginError(msg) {
-  const el = document.getElementById('login-error');
-  el.textContent = msg;
-  el.classList.toggle('show', !!msg);
-}
-
-// ============================================================
-//  GAS API 呼び出し（fetch + Bearer token）
-// ============================================================
-async function gasCall(action, extra) {
-  if (!isTokenValid()) throw new Error('ログインが必要です');
-  const res = await fetch(GAS_ENDPOINT, {
-    method: 'POST',
-    headers: { 'Content-Type': 'text/plain' }, // GASはContent-Type: application/jsonをCORSで弾く
-    body: JSON.stringify({ action, token: _token, ...extra }),
+// google.script.run をPromiseでラップ
+function gasRun(fnName, ...args) {
+  return new Promise((resolve, reject) => {
+    google.script.run
+      .withSuccessHandler(resolve)
+      .withFailureHandler(e => reject(new Error(e.message || String(e))))
+      [fnName](...args);
   });
-  if (!res.ok) throw new Error('HTTP ' + res.status);
-  return res.json();
 }
 
-function getClassroomData() { return gasCall('getClassroomData'); }
-function forceRefresh()      { return gasCall('forceRefresh'); }
+function getClassroomData() { return gasRun('getClassroomData'); }
+function forceRefresh()      { return gasRun('forceRefresh'); }
 
-// ============================================================
-//  IndexedDB キャッシュ（永続・TTLなし）
-// ============================================================
-const IDB_NAME  = 'gc_cache';
-const IDB_STORE = 'data';
-let _idb = null;
+/* ========== IndexedDB キャッシュ（永続・TTLなし）========== */
+const IDB_NAME    = 'gc_cache';
+const IDB_STORE   = 'data';
+const IDB_KEY     = 'classroom_v2_' + userEmail;  // ユーザーごとに分離
+let   _idb        = null;   // DBインスタンス（一度開いたら使い回す）
 
 function idbOpen() {
   if (_idb) return Promise.resolve(_idb);
   return new Promise((resolve, reject) => {
     const req = indexedDB.open(IDB_NAME, 1);
-    req.onupgradeneeded = e => e.target.result.createObjectStore(IDB_STORE);
+    req.onupgradeneeded = e => {
+      e.target.result.createObjectStore(IDB_STORE);
+    };
     req.onsuccess = e => { _idb = e.target.result; resolve(_idb); };
     req.onerror   = () => reject(req.error);
   });
@@ -1066,11 +1077,10 @@ function idbOpen() {
 
 async function lsSave(data) {
   try {
-    const key = 'classroom_v3_' + userEmail;
     const db = await idbOpen();
     return new Promise((resolve, reject) => {
       const tx  = db.transaction(IDB_STORE, 'readwrite');
-      const req = tx.objectStore(IDB_STORE).put({ data, savedAt: Date.now() }, key);
+      const req = tx.objectStore(IDB_STORE).put({ data, savedAt: Date.now() }, IDB_KEY);
       req.onsuccess = () => resolve();
       req.onerror   = () => reject(req.error);
     });
@@ -1079,11 +1089,10 @@ async function lsSave(data) {
 
 async function lsLoad() {
   try {
-    const key = 'classroom_v3_' + userEmail;
     const db = await idbOpen();
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       const tx  = db.transaction(IDB_STORE, 'readonly');
-      const req = tx.objectStore(IDB_STORE).get(key);
+      const req = tx.objectStore(IDB_STORE).get(IDB_KEY);
       req.onsuccess = () => resolve(req.result ? req.result.data : null);
       req.onerror   = () => resolve(null);
     });
@@ -1092,19 +1101,39 @@ async function lsLoad() {
 
 async function lsClear() {
   try {
-    const key = 'classroom_v3_' + userEmail;
     const db = await idbOpen();
-    return new Promise(resolve => {
-      const tx = db.transaction(IDB_STORE, 'readwrite');
-      tx.objectStore(IDB_STORE).delete(key);
+    return new Promise((resolve) => {
+      const tx  = db.transaction(IDB_STORE, 'readwrite');
+      tx.objectStore(IDB_STORE).delete(IDB_KEY);
       tx.oncomplete = () => resolve();
     });
   } catch(_) {}
 }
 
-// ============================================================
-//  定数
-// ============================================================
+/* ========== 定数 ========== */
+const SUBJECT_MASTER = {
+  1:{name:'体育',color:'#22c55e',bg:'#f0fdf4'},
+  2:{name:'音/美/工/書',color:'#e879f9',bg:'#fdf4ff'},
+  3:{name:'古典探究',color:'#ec4899',bg:'#fdf2f8'},
+  4:{name:'歴史探究',color:'#f97316',bg:'#fff7ed'},
+  5:{name:'数学B',color:'#3b82f6',bg:'#eff6ff'},
+  6:{name:'化学基礎',color:'#10b981',bg:'#ecfdf5'},
+  7:{name:'論理・表現Ⅱ',color:'#f59e0b',bg:'#fffbeb'},
+  8:{name:'公共',color:'#f97316',bg:'#fff7ed'},
+  9:{name:'英語コミュニケーションⅡ',color:'#f59e0b',bg:'#fffbeb'},
+  10:{name:'数学C',color:'#3b82f6',bg:'#eff6ff'},
+  11:{name:'保健',color:'#22c55e',bg:'#f0fdf4'},
+  12:{name:'数学II',color:'#3b82f6',bg:'#eff6ff'},
+  13:{name:'文学国語',color:'#ec4899',bg:'#fdf2f8'},
+  14:{name:'物理基礎',color:'#10b981',bg:'#ecfdf5'},
+  15:{name:'家庭基礎',color:'#14b8a6',bg:'#f0fdfa'},
+  16:{name:'SSH探究',color:'#8b5cf6',bg:'#f5f3ff'},
+  17:{name:'LHR',color:'#6366f1',bg:'#eef2ff'},
+  99:{name:'自習',color:'#94a3b8',bg:'#f8fafc'},
+  0:{name:'その他',color:'#94a3b8',bg:'#f8fafc'},
+};
+
+// Classroomのテーマ画像 (背景色でフォールバック)
 const COURSE_BG_COLORS = [
   'rgb(23,78,166)',   // cobalt blue
   'rgb(52,168,83)',   // sage green
@@ -1116,6 +1145,12 @@ const COURSE_BG_COLORS = [
   'rgb(96,125,139)',  // graphite
 ];
 
+function courseColor(id) {
+  const h = Math.abs(hashStr(String(id||'0')));
+  return COURSE_BG_COLORS[h % COURSE_BG_COLORS.length];
+}
+
+// Classroomのテーマ画像URL（フォールバック用）
 const THEME_IMAGES = [
   'https://gstatic.com/classroom/themes/img_graduation.jpg',
   'https://gstatic.com/classroom/themes/img_bookclub.jpg',
@@ -1127,22 +1162,23 @@ const THEME_IMAGES = [
   'https://gstatic.com/classroom/themes/Chemistry.jpg',
 ];
 
+// courseId → themeImageUrl のマップ（GAS Aから取得したものを入れる）
 let courseThemeMap = {};
+
+// APIデータ優先、なければハッシュでフォールバック
+function courseThemeImg(id) {
+  if (courseThemeMap[String(id)]) return courseThemeMap[String(id)];
+  const h = Math.abs(hashStr(String(id||'0')));
+  return THEME_IMAGES[h % THEME_IMAGES.length];
+}
 
 function hashStr(s) {
   let h=0; for(let i=0;i<s.length;i++) h=(Math.imul(31,h)+s.charCodeAt(i))|0; return h;
 }
-function courseColor(id) {
-  return COURSE_BG_COLORS[Math.abs(hashStr(String(id||'0'))) % COURSE_BG_COLORS.length];
-}
-function courseThemeImg(id) {
-  if (courseThemeMap[String(id)]) return courseThemeMap[String(id)];
-  return THEME_IMAGES[Math.abs(hashStr(String(id||'0'))) % THEME_IMAGES.length];
-}
 
-// ============================================================
-//  日付ユーティリティ
-// ============================================================
+function si(id) { return SUBJECT_MASTER[Number(id)] || SUBJECT_MASTER[0]; }
+
+/* ========== 日付ユーティリティ ========== */
 const TODAY = (()=>{ const d=new Date(); return `${d.getFullYear()}/${String(d.getMonth()+1).padStart(2,'0')}/${String(d.getDate()).padStart(2,'0')}`; })();
 const DOW = ['日','月','火','水','木','金','土'];
 
@@ -1151,10 +1187,12 @@ function parseDt(s) {
   const p=String(s).split(/[\/\-]/);
   return p.length<3 ? null : new Date(+p[0],+p[1]-1,+p[2]);
 }
+
 function diffDays(s) {
   const d=parseDt(s); if(!d) return null;
   const t=parseDt(TODAY); return Math.round((d-t)/86400000);
 }
+
 function fmtDate(s) {
   if (!s||s==='未定') return '期限なし';
   const d=parseDt(s); if(!d) return s;
@@ -1165,6 +1203,8 @@ function fmtDate(s) {
   if(diff!==null&&diff>0&&diff<=7) return `${diff}日後 (${d.getMonth()+1}/${d.getDate()})`;
   return `${d.getMonth()+1}月${d.getDate()}日(${DOW[d.getDay()]})`;
 }
+
+// ストリームカード用の日付表示（「昨日」「5月8日」形式）
 function fmtCreatedAt(s) {
   if (!s) return '';
   const d=parseDt(s); if(!d) return s;
@@ -1175,26 +1215,27 @@ function fmtCreatedAt(s) {
   if(d.getFullYear()===thisYear) return `${d.getMonth()+1}月${d.getDate()}日`;
   return `${d.getFullYear()}/${d.getMonth()+1}/${d.getDate()}`;
 }
+
 function fmtDateLong(s) {
   const d=parseDt(s); if(!d) return s;
   return `${d.getFullYear()}年${d.getMonth()+1}月${d.getDate()}日(${DOW[d.getDay()]})`;
 }
+
 function urgCls(s) {
   const d=diffDays(s); if(d===null) return '';
   if(d<0) return 'urgent'; if(d<=2) return 'urgent'; if(d<=5) return 'soon'; return '';
 }
 
-// ============================================================
-//  状態
-// ============================================================
+/* ========== 状態 ========== */
 let currentView = 'home';
 let currentCourseId = null;
-let cachedCourses = [];
-let cachedCourseWorks = [];
-let cachedAnns = [];
-let cachedMaterials = [];
+let cachedCourses = [];    // [{id, name, themeImageUrl, ...}]
+let cachedCourseWorks = []; // 課題
+let cachedAnns = [];        // お知らせ
+let cachedMaterials = [];   // 投稿資料
 let todoFilter = 'upcoming';
 
+// 全ストリームアイテム（課題+お知らせ+投稿をまとめたもの）
 function allItems() {
   return [
     ...cachedCourseWorks,
@@ -1203,9 +1244,7 @@ function allItems() {
   ].sort((a,b) => (b.created_at||'').localeCompare(a.created_at||''));
 }
 
-// ============================================================
-//  ドロワー
-// ============================================================
+/* ========== ドロワー ========== */
 function toggleDrawer() {
   document.getElementById('side-drawer').classList.toggle('open');
   document.getElementById('drawer-overlay').classList.toggle('open');
@@ -1215,9 +1254,7 @@ function closeDrawer() {
   document.getElementById('drawer-overlay').classList.remove('open');
 }
 
-// ============================================================
-//  ビュー
-// ============================================================
+/* ========== ビュー ========== */
 function showView(v, params) {
   document.querySelectorAll('.gc-view').forEach(e=>e.classList.remove('active'));
   document.querySelectorAll('.drawer-nav-item').forEach(e=>e.classList.remove('active'));
@@ -1234,8 +1271,12 @@ function showView(v, params) {
 }
 
 function refreshCurrent() {
+  // localStorage・メモリキャッシュ両方クリアして強制再取得
   lsClear();
-  cachedCourses=[]; cachedCourseWorks=[]; cachedAnns=[]; cachedMaterials=[];
+  cachedCourses=[];
+  cachedCourseWorks=[];
+  cachedAnns=[];
+  cachedMaterials=[];
   snack('更新中...');
   if (currentView==='home')           loadHome(true);
   else if (currentView==='stream')    loadStream({courseId:currentCourseId});
@@ -1243,9 +1284,7 @@ function refreshCurrent() {
   else if (currentView==='todo')      loadTodo(true);
 }
 
-// ============================================================
-//  Snackbar
-// ============================================================
+/* ========== Snackbar ========== */
 let snackT=null;
 function snack(msg) {
   const el=document.getElementById('snackbar');
@@ -1254,75 +1293,77 @@ function snack(msg) {
   snackT=setTimeout(()=>el.classList.remove('show'),3000);
 }
 
-// ============================================================
-//  エスケープ
-// ============================================================
+/* ========== エスケープ ========== */
 function esc(s) {
   return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 
-// ============================================================
-//  データ適用ヘルパー
-// ============================================================
+/* ========== データ適用ヘルパー ========== */
 function applyData(data) {
-  cachedCourses     = data.courses      || [];
-  cachedCourseWorks = data.courseWorks  || [];
+  cachedCourses     = data.courses     || [];
+  cachedCourseWorks = data.courseWorks || [];
   cachedAnns        = data.announcements || [];
-  cachedMaterials   = data.materials    || [];
+  cachedMaterials   = data.materials   || [];
   cachedCourses.forEach(c => {
     if (c.themeImageUrl) courseThemeMap[String(c.id)] = c.themeImageUrl;
   });
 }
 
+// 差分チェック: コース数・課題数・お知らせ数が変わったら差分ありとみなす
 function hasChanged(oldData, newData) {
   if (!oldData) return true;
   return (
-    (oldData.courses      ||[]).length !== (newData.courses      ||[]).length ||
-    (oldData.courseWorks  ||[]).length !== (newData.courseWorks  ||[]).length ||
+    (oldData.courses     ||[]).length !== (newData.courses     ||[]).length ||
+    (oldData.courseWorks ||[]).length !== (newData.courseWorks ||[]).length ||
     (oldData.announcements||[]).length !== (newData.announcements||[]).length ||
-    (oldData.materials    ||[]).length !== (newData.materials    ||[]).length
+    (oldData.materials   ||[]).length !== (newData.materials   ||[]).length
   );
 }
 
-// ============================================================
-//  HOME
-// ============================================================
+/* ========== HOME ========== */
 async function loadHome(force) {
   const el=document.getElementById('home-content');
 
-  if (force) { await lsClear(); cachedCourses=[]; }
-
-  if (cachedCourses.length) {
-    renderHome(); renderDrawerCourses(); _bgRefresh(); return;
+  if (force) {
+    await lsClear();
+    cachedCourses=[];
   }
 
+  // 1. メモリキャッシュがあれば即時描画
+  if (cachedCourses.length) {
+    renderHome();
+    renderDrawerCourses();
+    // バックグラウンドで差分チェック
+    _bgRefresh();
+    return;
+  }
+
+  // 2. IndexedDBキャッシュがあれば即時描画（TTLなし・永続）
   const idbData = await lsLoad();
   if (idbData) {
     applyData(idbData);
-    renderHome(); renderDrawerCourses();
+    renderHome();
+    renderDrawerCourses();
+    // バックグラウンドでGASから取得 → 差分があれば静かに再描画
     _bgRefresh(idbData);
     return;
   }
 
+  // 3. キャッシュなし（初回）: ローディング → GAS取得
   el.innerHTML='<div class="loading-state"><div class="spinner"></div></div>';
   try {
     const data = await getClassroomData();
     if (!data || !data.success) throw new Error(data && data.error || '取得失敗');
     applyData(data);
     lsSave(data);
-    renderHome(); renderDrawerCourses();
+    renderHome();
+    renderDrawerCourses();
   } catch(e) {
-    if (e.message === 'ログインが必要です') { showNeedLogin(); return; }
     el.innerHTML=`<div style="padding:1.5rem;"><div style="background:#fce8e6;border-left:4px solid #d93025;padding:.75rem 1rem;border-radius:.25rem;color:#c5221f;font-size:.875rem;">読み込みエラー: ${esc(e.message)}</div></div>`;
   }
 }
 
-function showNeedLogin() {
-  document.getElementById('app').style.display = 'none';
-  document.getElementById('login-screen').style.display = 'flex';
-  showLoginError('セッションが切れました。再度ログインしてください。');
-}
-
+// バックグラウンド差分リフレッシュ
 let _bgRunning = false;
 function _bgRefresh(prevData) {
   if (_bgRunning) return;
@@ -1330,13 +1371,16 @@ function _bgRefresh(prevData) {
   getClassroomData().then(data => {
     _bgRunning = false;
     if (!data || !data.success) return;
-    if (hasChanged(prevData || { courses:cachedCourses, courseWorks:cachedCourseWorks, announcements:cachedAnns, materials:cachedMaterials }, data)) {
-      applyData(data); lsSave(data);
+    if (hasChanged(prevData || { courses: cachedCourses, courseWorks: cachedCourseWorks, announcements: cachedAnns, materials: cachedMaterials }, data)) {
+      applyData(data);
+      lsSave(data);
+      // 現在表示中のビューを再描画
       if (currentView==='home')           { renderHome(); renderDrawerCourses(); }
       else if (currentView==='stream')    { _renderStream(currentCourseId, document.getElementById('stream-content')); }
       else if (currentView==='classwork') { _renderClasswork(currentCourseId, document.getElementById('classwork-content')); }
       else if (currentView==='todo')      { renderTodo(); }
     } else {
+      // 差分なし: IndexedDBのsavedAtだけ更新
       lsSave(data);
     }
   }).catch(() => { _bgRunning = false; });
@@ -1359,18 +1403,22 @@ function renderHome() {
       ? `<span style="background:#e8f0fe;color:#1a73e8;border-radius:.75rem;padding:.125rem .5rem;font-size:.6875rem;font-weight:600;font-family:'Google Sans',Roboto,sans-serif;">${urgentCount>0?'⚠ ':''} ${taskCount}件の未提出の課題</span>`
       : `<span style="font-size:.6875rem;color:var(--gm3-sys-color-on-surface-variant,#444746);font-family:'Google Sans',Roboto,sans-serif;">提出期限の近い課題はありません</span>`;
 
+    const teacherPhoto = c.teacherPhotoUrl
+      ? `<div class="TQYOZc" style="display:block;"><img class="PNzAWd" src="${esc(c.teacherPhotoUrl)}" alt="${esc(c.teacherName||'')}"></div>`
+      : `<div style="position:absolute;right:1rem;top:-1.25rem;width:2.5rem;height:2.5rem;border-radius:50%;border:2px solid #fff;background:${color};display:flex;align-items:center;justify-content:center;color:#fff;font-size:.875rem;font-weight:600;">${initial}</div>`;
+
     html+=`
     <li class="gHz6xd riU7le rZXyy" style="list-style:none;" onclick="openCourse('${esc(c.id)}')">
       <div class="Tc9hUd" style="height:6.25rem;">
         <div class="O7utsb lmPo4" style="background-color:${color};position:absolute;inset:0;"></div>
-        ${img?`<div class="OjOEXb" style="background-image:url('${img}');position:absolute;inset:0;background-size:cover;background-position:center;opacity:.7;"></div>`:''}
+        ${img?`<div class="OjOEXb Gf8MK" style="background-image:url('${img}');position:absolute;inset:0;background-size:cover;background-position:center;opacity:.7;"></div>`:''}
         <div class="ZizeYd qm64Ve"></div>
         <div class="R4EiSb">
           <div class="ScpeUc prWPdf">
             <div class="Vu2fZd XwD7Ke FWGURc">${esc(c.name)}</div>
           </div>
           ${c.section?`<div class="prWPdf"><div class="Vu2fZd Svw0vd">${esc(c.section)}</div></div>`:''}
-          ${c.teacherName?`<div class="prWPdf"><div class="Vu2fZd T30lh">${esc(c.teacherName)}</div></div>`:''}
+          ${c.teacherName?`<div class="prWPdf"><div class="Vu2fZd z07MGc Vu2fZd jJIbcc T30lh">${esc(c.teacherName)}</div></div>`:''}
         </div>
       </div>
       <div style="height:2.5rem;position:relative;">
@@ -1379,7 +1427,7 @@ function renderHome() {
           : `<div style="position:absolute;right:1rem;top:-1.25rem;width:2.5rem;height:2.5rem;border-radius:50%;border:2px solid #fff;background:${color};display:flex;align-items:center;justify-content:center;color:#fff;font-size:.875rem;font-weight:600;">${initial}</div>`
         }
       </div>
-      <div class="xo2x2e AX2up" style="display:block;">${badge}</div>
+      <div class="xo2x2e AX2up">${badge}</div>
       <div class="SZ0kZe" onclick="event.stopPropagation()">
         <button class="pYTkkf-Bz112c-LgbsSe ykp8pd" onclick="openCourseClasswork('${esc(c.id)}')" title="授業">
           <span class="quRWN-Bz112c notranslate">assignment</span>
@@ -1409,33 +1457,36 @@ function renderDrawerCourses() {
     </a>`).join('');
 }
 
-// ============================================================
-//  コースを開く
-// ============================================================
+
+/* ========== コースを開く ========== */
 function openCourse(cid) { currentCourseId=cid; showView('stream',{courseId:cid}); }
 function openCourseClasswork(cid) { currentCourseId=cid; showView('classwork',{courseId:cid}); }
 
+/* ========== データ保証ヘルパー（キャッシュがなければGASから取得）========== */
 async function ensureData() {
   if (cachedCourses.length) { _bgRefresh(); return true; }
   const idbData = await lsLoad();
-  if (idbData) { applyData(idbData); _bgRefresh(idbData); return true; }
+  if (idbData) {
+    applyData(idbData);
+    _bgRefresh(idbData);
+    return true;
+  }
   const data = await getClassroomData();
   if (!data || !data.success) throw new Error(data && data.error || '取得失敗');
-  applyData(data); lsSave(data);
+  applyData(data);
+  lsSave(data);
   return true;
 }
 
-// ============================================================
-//  STREAM
-// ============================================================
+/* ========== STREAM ========== */
 async function loadStream(params) {
   const cid=(params&&params.courseId)||currentCourseId;
   const el=document.getElementById('stream-content');
   if (!cachedCourses.length) el.innerHTML='<div class="loading-state"><div class="spinner"></div></div>';
   try {
-    await ensureData(); renderDrawerCourses();
+    await ensureData();
+    renderDrawerCourses();
   } catch(e) {
-    if (e.message==='ログインが必要です') { showNeedLogin(); return; }
     el.innerHTML=`<div style="padding:1.5rem;color:#c5221f;">読み込みエラー: ${esc(e.message)}</div>`; return;
   }
   _renderStream(cid, el);
@@ -1451,11 +1502,13 @@ function _renderStream(cid, el) {
   const color=courseColor(cid);
   const img=courseThemeImg(cid);
 
+  // 近日締切の課題（サイドバー用）
   const upcoming=cachedCourseWorks
     .filter(t=>String(t.course_id)===String(cid)&&!t.completed&&t.deadline&&t.deadline!=='未定')
     .sort((a,b)=>(a.deadline||'').localeCompare(b.deadline||''))
     .slice(0,5);
 
+  // バナー
   let html=`
     <div class="course-banner" style="max-width:62rem;margin:0 auto 0;border-radius:0 0 .75rem .75rem;">
       <div class="course-banner-bg" style="background-image:url('${img}');background-color:${color};"></div>
@@ -1464,15 +1517,19 @@ function _renderStream(cid, el) {
         <div class="course-banner-name">${esc(c.name)}</div>
         ${c.section?`<div class="course-banner-sub">${esc(c.section)}</div>`:''}
       </div>
+    </div>`;
+
+  // タブ
+  html+=`<div style="max-width:62rem;margin:0 auto;">
+    <div class="course-tabs" style="border-radius:0;border-left:none;border-right:none;border-top:none;">
+      <button class="course-tab active">ストリーム</button>
+      <button class="course-tab" onclick="openCourseClasswork('${esc(cid)}')">授業</button>
     </div>
-    <div style="max-width:62rem;margin:0 auto;">
-      <div class="course-tabs" style="border-radius:0;border-left:none;border-right:none;border-top:none;">
-        <button class="course-tab active">ストリーム</button>
-        <button class="course-tab" onclick="openCourseClasswork('${esc(cid)}')">授業</button>
-      </div>
-    </div>
-    <div class="stream-layout">
-      <div class="stream-main">`;
+  </div>`;
+
+  // ストリーム本体（左:フィード、右:サイドバー）
+  html+=`<div class="stream-layout">
+    <div class="stream-main">`;
 
   if(!items.length){
     html+=`<div class="empty-state"><span class="icon">forum</span><h3>投稿はありません</h3></div>`;
@@ -1480,10 +1537,12 @@ function _renderStream(cid, el) {
     items.forEach(item=>{ html+=buildStreamCard(item); });
   }
 
-  html+=`</div>
-    <div class="stream-sidebar">
-      <div class="sidebar-card">
-        <div class="sidebar-card-header">近日の課題</div>`;
+  html+=`</div>`;
+
+  // サイドバー
+  html+=`<div class="stream-sidebar">
+    <div class="sidebar-card">
+      <div class="sidebar-card-header">近日の課題</div>`;
   if(!upcoming.length){
     html+=`<div style="padding:.75rem 1rem;font-size:.875rem;color:var(--gm3-sys-color-on-surface-variant,#444746);">提出期限が近い課題はありません</div>`;
   } else {
@@ -1499,14 +1558,16 @@ function _renderStream(cid, el) {
     });
   }
   html+=`</div>
-      <div class="sidebar-card">
-        <a class="sidebar-card-item" href="${esc(c.alternateLink||'#')}" target="_blank">
-          <span class="mat-icon">open_in_new</span>
-          <span class="sidebar-card-item-label">Classroomで開く</span>
-        </a>
-      </div>
+
+    <div class="sidebar-card">
+      <a class="sidebar-card-item" href="${esc(c.alternateLink||'#')}" target="_blank">
+        <span class="mat-icon">open_in_new</span>
+        <span class="sidebar-card-item-label">Classroomで開く</span>
+      </a>
     </div>
   </div>`;
+
+  html+=`</div>`; // stream-layout終わり
 
   el.innerHTML=html;
 }
@@ -1523,15 +1584,20 @@ function buildStreamCard(item) {
   const aid=esc(item.id||'');
   const dateStr=fmtCreatedAt(item.created_at||'');
 
+  // アイコン
   const iconName = isTask?'assignment':isMaterial?'description':'campaign';
   const iconBg   = isTask?'#e8f0fe':isMaterial?'#e6f4ea':'#fce8e6';
   const iconClr  = isTask?'rgb(26,115,232)':isMaterial?'rgb(30,142,62)':'rgb(217,48,37)';
+  // iconコンテナはuUMf4c(青bg)/FeltXd(青色)などClassroomの実クラス
+  const iconBgClass = isTask?'uUMf4c FeltXd':isMaterial?'':'';
 
+  // 「〇〇さんが投稿しました」テキスト
   let actionText='';
-  if(isTask)          actionText=`新しい課題: 「${title}」`;
+  if(isTask)      actionText=`新しい課題: 「${title}」`;
   else if(isMaterial) actionText=`新しい資料を投稿しました: ${title}`;
-  else                actionText=`お知らせを投稿しました`;
+  else            actionText=`お知らせを投稿しました`;
 
+  // 本物Classroomのカード構造
   return `
   <div class="stream-card-real" id="sc-${aid}">
     <div class="card-top">
@@ -1556,22 +1622,21 @@ function buildStreamCard(item) {
       </div>
       <div style="display:flex;align-items:center;gap:.5rem;">
         ${isTask?`<button class="check-btn ${item.completed?'done':''}" onclick="toggleTask('${aid}',this)" title="${item.completed?'提出を取り消す':'提出済みにする'}">${item.completed?'<span style="font-family:\'Material Symbols Outlined\';font-size:18px;">check</span>':''}</button>`:''}
-        ${item.link?`<a class="open-link" href="${esc(item.link)}" target="_blank" style="display:inline-flex;align-items:center;gap:.25rem;font-size:.875rem;font-weight:500;font-family:Google Sans,Roboto,Arial,sans-serif;color:#1a73e8;text-decoration:none;padding:.375rem .75rem;border-radius:.25rem;transition:background .15s;"><span style="font-family:'Material Symbols Outlined';font-size:16px;">open_in_new</span>開く</a>`:''}
+        ${item.link?`<a class="open-link" href="${esc(item.link)}" target="_blank"><span class="icon">open_in_new</span>開く</a>`:''}
       </div>
     </div>
   </div>`;
 }
 
-// ============================================================
-//  CLASSWORK
-// ============================================================
+/* ========== CLASSWORK ========== */
 async function loadClasswork(params) {
   const cid=(params&&params.courseId)||currentCourseId;
   const el=document.getElementById('classwork-content');
   if (!cachedCourses.length) el.innerHTML='<div class="loading-state"><div class="spinner"></div></div>';
-  try { await ensureData(); renderDrawerCourses(); }
-  catch(e) {
-    if (e.message==='ログインが必要です') { showNeedLogin(); return; }
+  try {
+    await ensureData();
+    renderDrawerCourses();
+  } catch(e) {
     el.innerHTML=`<div style="padding:1.5rem;color:#c5221f;">読み込みエラー: ${esc(e.message)}</div>`; return;
   }
   _renderClasswork(cid, el);
@@ -1599,13 +1664,15 @@ function _renderClasswork(cid, el) {
         <button class="course-tab active">授業</button>
       </div>
     </div>
-    <div class="classwork-container">`;
+    <div class="classwork-container">
+    <div class="classwork-page-header" style="display:none;"></div>`;
 
   if(!tasks.length){
     html+=`<div class="empty-state"><span class="icon">assignment</span><h3>課題はありません</h3></div></div>`;
     el.innerHTML=html; return;
   }
 
+  // グループ分け
   const grps={};
   const ORDER=['今日まで','明日まで','今週中','それ以降','期限なし','期限切れ'];
   tasks.forEach(t=>{
@@ -1632,7 +1699,7 @@ function _renderClasswork(cid, el) {
     grps[g].forEach(t=>{ html+=buildWorkItem(t); });
     html+=`</div></div>`;
   });
-  html+=`</div>`;
+  html+=`</div>`; // classwork-container終わり
   el.innerHTML=html;
 }
 
@@ -1671,18 +1738,15 @@ function buildWorkItem(item) {
   </div>`;
 }
 
-// ============================================================
-//  TODO
-// ============================================================
+/* ========== TODO ========== */
 async function loadTodo(force) {
   const el=document.getElementById('todo-content');
   if (force) { await lsClear(); cachedCourses=[]; }
   if (!cachedCourseWorks.length) el.innerHTML='<div class="loading-state"><div class="spinner"></div></div>';
-  try { await ensureData(); renderTodo(); }
-  catch(e) {
-    if (e.message==='ログインが必要です') { showNeedLogin(); return; }
-    el.innerHTML=`<div style="padding:1.5rem;color:#c5221f;">${esc(e.message)}</div>`;
-  }
+  try {
+    await ensureData();
+    renderTodo();
+  } catch(e) { el.innerHTML=`<div style="padding:1.5rem;color:#c5221f;">${esc(e.message)}</div>`; }
 }
 
 function setTodoFilter(f) {
@@ -1732,13 +1796,12 @@ function renderTodo() {
   el.innerHTML=html;
 }
 
-// ============================================================
-//  課題完了トグル
-// ============================================================
+/* ========== 課題完了トグル ========== */
 function toggleTask(taskId, btn) {
   const done=btn.classList.contains('done');
   const newVal=!done;
 
+  // 楽観的UI更新: ボタン全部（同じtaskIdが複数箇所にある）
   document.querySelectorAll(`[onclick*="'${taskId}'"]`).forEach(b => {
     if(b.classList.contains('check-btn')) {
       if(newVal) {
@@ -1753,16 +1816,16 @@ function toggleTask(taskId, btn) {
     }
   });
 
+  // メモリキャッシュ更新
   cachedCourseWorks=cachedCourseWorks.map(t=>t.id===taskId?{...t,completed:newVal}:t);
   snack(newVal?'✓ 提出済みにしました':'提出を取り消しました');
   if(currentView==='todo') renderTodo();
 
-  gasCall('setTaskCompleted', { courseWorkId: taskId, completed: newVal }).catch(()=>{});
+  // GAS PropertiesService に永続化（引数: courseWorkId, completed）
+  gasRun('setTaskCompleted', taskId, newVal).catch(()=>{});
 }
 
-// ============================================================
-//  詳細モーダル
-// ============================================================
+/* ========== 詳細モーダル ========== */
 function openDetail(itemJson) {
   const item=typeof itemJson==='string'?JSON.parse(itemJson):itemJson;
   const isTask=item.type==='assignment';
@@ -1798,39 +1861,37 @@ function closeDetail(e) {
   document.getElementById('detail-overlay').classList.remove('open');
 }
 
-// ============================================================
-//  ポーリング（共有サマリー差分通知）
-// ============================================================
-const POLL_INTERVAL = 30 * 1000;
-let _pollTimer    = null;
-let _lastWrittenAt = null;
-let _pendingData  = null;
-let _pollActive   = false;
+/* ========== ポーリング（共有サマリー差分通知）========== */
+// 仕組み:
+//   誰かがgetClassroomData()を呼ぶとScriptPropertiesに
+//   {cwCount, annCount, matCount, latestTime, writtenAt} が書き込まれる。
+//   他のユーザーは30秒ごとにgetSharedSummary()でそれを読むだけ。
+//   Classroom APIは一切叩かないので超軽量。
+//   サマリーが自分のキャッシュより新しければバナーを表示する。
 
-// 学校の時間帯（月〜金 7:30〜20:00）のみポーリング
-function shouldPoll() {
-  const now = new Date();
-  const dow = now.getDay(); // 0=日, 6=土
-  if (dow === 0 || dow === 6) return false;
-  const h = now.getHours();
-  const m = now.getMinutes();
-  const t = h * 60 + m;
-  return t >= 7*60+30 && t < 20*60;
-}
+const POLL_INTERVAL = 30 * 1000;  // 30秒
+let   _pollTimer    = null;
+let   _lastWrittenAt = null;  // 最後に確認したwrittenAt
+let   _pendingData  = null;   // バックグラウンドで取得済みの新データ
+let   _pollActive   = false;  // 二重起動防止
 
 function showUpdateBanner(msg) {
   const banner = document.getElementById('update-banner');
   document.getElementById('update-banner-text').textContent = msg;
   banner.classList.add('show');
 }
+
 function hideUpdateBanner() {
   document.getElementById('update-banner').classList.remove('show');
 }
 
+// バナータップ: 取得済みデータを適用して再描画
 function applyUpdate() {
   hideUpdateBanner();
   if (!_pendingData) return;
-  applyData(_pendingData); lsSave(_pendingData); _pendingData = null;
+  applyData(_pendingData);
+  lsSave(_pendingData);
+  _pendingData = null;
   if (currentView==='home')           { renderHome(); renderDrawerCourses(); }
   else if (currentView==='stream')    { _renderStream(currentCourseId, document.getElementById('stream-content')); }
   else if (currentView==='classwork') { _renderClasswork(currentCourseId, document.getElementById('classwork-content')); }
@@ -1839,17 +1900,26 @@ function applyUpdate() {
 }
 
 async function pollOnce() {
-  if (_pollActive || !shouldPoll()) return;
+  if (_pollActive) return;
   _pollActive = true;
   try {
-    const summary = await gasCall('getSharedSummary');
+    // ScriptPropertiesを読むだけ — Classroom API不使用・クォータ消費なし
+    const summary = await gasRun('getSharedSummary');
     if (!summary || !summary.success || summary.empty) return;
 
     const { cwCount, annCount, matCount, latestTime, writtenAt } = summary;
-    if (!_lastWrittenAt) { _lastWrittenAt = writtenAt; return; }
+
+    // 初回: ベースラインを記録するだけ
+    if (!_lastWrittenAt) {
+      _lastWrittenAt = writtenAt;
+      return;
+    }
+
+    // writtenAtが更新されていれば誰かが新しいデータを書き込んだ
     if (writtenAt === _lastWrittenAt) return;
     _lastWrittenAt = writtenAt;
 
+    // 自分のキャッシュと比較して実際に差分があるか確認
     const myChanged =
       cwCount  !== cachedCourseWorks.length ||
       annCount !== cachedAnns.length        ||
@@ -1858,10 +1928,13 @@ async function pollOnce() {
 
     if (!myChanged) return;
 
-    const data = await gasCall('forceRefresh');
+    // 差分あり: バックグラウンドでフルデータ取得（キャッシュクリアして最新を強制取得）
+    const data = await gasRun('forceRefresh');
     if (!data || !data.success) return;
 
     _pendingData = data;
+
+    // 新着件数のメッセージを組み立て
     const newCw  = Math.max(0, (data.courseWorks   ||[]).length - cachedCourseWorks.length);
     const newAnn = Math.max(0, (data.announcements ||[]).length - cachedAnns.length);
     const newMat = Math.max(0, (data.materials     ||[]).length - cachedMaterials.length);
@@ -1872,13 +1945,15 @@ async function pollOnce() {
     if (newMat > 0) parts.push(`資料${newMat}件`);
     if (parts.length) msg = parts.join('・') + 'の新着';
     showUpdateBanner(msg + ' — タップして更新');
+
   } catch(_) {}
   finally { _pollActive = false; }
 }
 
 function startPolling() {
   if (_pollTimer) return;
-  gasCall('getSharedSummary').then(s => {
+  // 起動直後にベースラインを取得
+  gasRun('getSharedSummary').then(s => {
     if (s && s.success && !s.empty) _lastWrittenAt = s.writtenAt;
   }).catch(()=>{});
   _pollTimer = setInterval(pollOnce, POLL_INTERVAL);
@@ -1888,63 +1963,24 @@ function stopPolling() {
   if (_pollTimer) { clearInterval(_pollTimer); _pollTimer = null; }
 }
 
+// タブが非表示 → ポーリング停止（バッテリー・クォータ節約）
+// タブに戻る  → 再開 + 即チェック
 document.addEventListener('visibilitychange', () => {
   if (document.hidden) { stopPolling(); }
   else { startPolling(); pollOnce(); }
 });
 
-// ============================================================
-//  Service Worker 登録
-// ============================================================
-async function registerSW() {
-  if (!('serviceWorker' in navigator)) return;
-  try {
-    await navigator.serviceWorker.register('./sw.js');
-  } catch(_) {}
-}
-
-// ============================================================
-//  アプリ初期化
-// ============================================================
-function initApp() {
-  document.getElementById('login-screen').style.display = 'none';
-  document.getElementById('app').style.display = 'block';
-
-  // アバターの頭文字を設定
-  const initial = (userEmail || 'U')[0].toUpperCase();
-  document.getElementById('user-avatar').textContent = initial;
-
+/* ========== 初期化 ========== */
+(function init(){
   try {
     const p=new URLSearchParams(window.location.search);
     const tab=p.get('tab');
     if(['home','todo','stream','classwork'].includes(tab)) showView(tab);
     else showView('home');
   } catch(_){ showView('home'); }
-
+  // データ読み込み完了後にポーリング開始
+  // (loadHomeのIndexedDB/GAS取得が終わってからベースライン記録)
   setTimeout(startPolling, 5000);
-  registerSW();
-}
-
-// ============================================================
-//  起動時: トークン復元 or ログイン画面
-// ============================================================
-(async function boot() {
-  if (tryRestoreToken()) {
-    // emailはlocalStorageから即復元済み（tryRestoreToken内）
-    // emailが空の場合のみtokeninfoで取得（初回ログイン後のリロード対策）
-    if (!userEmail) {
-      try {
-        const infoRes = await fetch(
-          'https://www.googleapis.com/oauth2/v3/tokeninfo?access_token=' + encodeURIComponent(_token)
-        );
-        const info = await infoRes.json();
-        userEmail = info.email || '';
-        if (userEmail) localStorage.setItem('gc_user_email', userEmail);
-      } catch(_) {}
-    }
-    initApp();
-  }
-  // それ以外はログイン画面のまま待機
 })();
 </script>
 </body>
