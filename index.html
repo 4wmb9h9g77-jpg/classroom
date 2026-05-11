@@ -973,7 +973,7 @@ function startLogin() {
   }
 
   // ポップアップからのメッセージを待つ
-  window.addEventListener('message', function onMsg(e) {
+  window.addEventListener('message', async function onMsg(e) {
     if (e.origin !== ORIGIN) return;
     if (!e.data || e.data.type !== 'GC_AUTH_SUCCESS') return;
     window.removeEventListener('message', onMsg);
