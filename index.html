@@ -1044,7 +1044,7 @@ async function gasCall(action, extra) {
   return res.json();
 }
 
-function getClassroomData() { return gasCall('getClassroomData'); }
+function getClassroomData(firstLoad) { return gasCall('getClassroomData', { firstLoad: !!firstLoad }); }
 function forceRefresh()      { return gasCall('forceRefresh'); }
 
 // ============================================================
@@ -1235,6 +1235,7 @@ function showView(v, params) {
 
 function refreshCurrent() {
   lsClear();
+  localStorage.removeItem('gc_first_loaded'); // 手動更新時は全件Submissions再取得
   cachedCourses=[]; cachedCourseWorks=[]; cachedAnns=[]; cachedMaterials=[];
   snack('更新中...');
   if (currentView==='home')           loadHome(true);
@@ -1274,14 +1275,69 @@ function applyData(data) {
   });
 }
 
-function hasChanged(oldData, newData) {
-  if (!oldData) return true;
-  return (
-    (oldData.courses      ||[]).length !== (newData.courses      ||[]).length ||
-    (oldData.courseWorks  ||[]).length !== (newData.courseWorks  ||[]).length ||
-    (oldData.announcements||[]).length !== (newData.announcements||[]).length ||
-    (oldData.materials    ||[]).length !== (newData.materials    ||[]).length
-  );
+// ============================================================
+//  フルSync判定（1日1回）
+// ============================================================
+function needsFullSync() {
+  const last = localStorage.getItem('gc_last_full_sync');
+  if (!last) return true;
+  const lastDate = new Date(Number(last));
+  const now = new Date();
+  // 日付が変わっていたらフルSync
+  return lastDate.getFullYear() !== now.getFullYear() ||
+         lastDate.getMonth()    !== now.getMonth()    ||
+         lastDate.getDate()     !== now.getDate();
+}
+
+function markFullSync() {
+  localStorage.setItem('gc_last_full_sync', String(Date.now()));
+  localStorage.setItem('gc_first_loaded', '1');
+}
+
+// ============================================================
+//  差分マージ（新着だけ追加・既存のcompleted状態は維持）
+// ============================================================
+function mergeData(newData) {
+  let changed = false;
+
+  // コース: IDセットで差分チェック（コースが増えることはまれだが一応）
+  const existingCourseIds = new Set(cachedCourses.map(c => String(c.id)));
+  (newData.courses || []).forEach(c => {
+    if (!existingCourseIds.has(String(c.id))) {
+      cachedCourses.push(c);
+      if (c.themeImageUrl) courseThemeMap[String(c.id)] = c.themeImageUrl;
+      changed = true;
+    }
+  });
+
+  // 課題: 新着IDだけ追加、既存のcompleted状態は触らない
+  const existingCwIds = new Set(cachedCourseWorks.map(t => String(t.id)));
+  (newData.courseWorks || []).forEach(cw => {
+    if (!existingCwIds.has(String(cw.id))) {
+      cachedCourseWorks.push(cw);
+      changed = true;
+    }
+  });
+
+  // お知らせ: 新着だけ追加
+  const existingAnnIds = new Set(cachedAnns.map(a => String(a.id)));
+  (newData.announcements || []).forEach(ann => {
+    if (!existingAnnIds.has(String(ann.id))) {
+      cachedAnns.push(ann);
+      changed = true;
+    }
+  });
+
+  // 資料: 新着だけ追加
+  const existingMatIds = new Set(cachedMaterials.map(m => String(m.id)));
+  (newData.materials || []).forEach(mat => {
+    if (!existingMatIds.has(String(mat.id))) {
+      cachedMaterials.push(mat);
+      changed = true;
+    }
+  });
+
+  return changed;
 }
 
 // ============================================================
@@ -1300,14 +1356,17 @@ async function loadHome(force) {
   if (idbData) {
     applyData(idbData);
     renderHome(); renderDrawerCourses();
-    _bgRefresh(idbData);
+    _bgRefresh();
     return;
   }
 
   el.innerHTML='<div class="loading-state"><div class="spinner"></div></div>';
   try {
-    const data = await getClassroomData();
+    // 1日1回フルSync（Submissions含む）、それ以外は通常取得
+    const isFullSync = needsFullSync();
+    const data = await getClassroomData(isFullSync);
     if (!data || !data.success) throw new Error(data && data.error || '取得失敗');
+    if (isFullSync) markFullSync();
     applyData(data);
     lsSave(data);
     renderHome(); renderDrawerCourses();
@@ -1324,20 +1383,19 @@ function showNeedLogin() {
 }
 
 let _bgRunning = false;
-function _bgRefresh(prevData) {
+function _bgRefresh() {
   if (_bgRunning) return;
   _bgRunning = true;
-  getClassroomData().then(data => {
+  getClassroomData(false).then(data => {
     _bgRunning = false;
     if (!data || !data.success) return;
-    if (hasChanged(prevData || { courses:cachedCourses, courseWorks:cachedCourseWorks, announcements:cachedAnns, materials:cachedMaterials }, data)) {
-      applyData(data); lsSave(data);
+    const changed = mergeData(data);
+    if (changed) {
+      lsSave({ success:true, email:userEmail, courses:cachedCourses, courseWorks:cachedCourseWorks, announcements:cachedAnns, materials:cachedMaterials });
       if (currentView==='home')           { renderHome(); renderDrawerCourses(); }
       else if (currentView==='stream')    { _renderStream(currentCourseId, document.getElementById('stream-content')); }
       else if (currentView==='classwork') { _renderClasswork(currentCourseId, document.getElementById('classwork-content')); }
       else if (currentView==='todo')      { renderTodo(); }
-    } else {
-      lsSave(data);
     }
   }).catch(() => { _bgRunning = false; });
 }
@@ -1830,11 +1888,15 @@ function hideUpdateBanner() {
 function applyUpdate() {
   hideUpdateBanner();
   if (!_pendingData) return;
-  applyData(_pendingData); lsSave(_pendingData); _pendingData = null;
-  if (currentView==='home')           { renderHome(); renderDrawerCourses(); }
-  else if (currentView==='stream')    { _renderStream(currentCourseId, document.getElementById('stream-content')); }
-  else if (currentView==='classwork') { _renderClasswork(currentCourseId, document.getElementById('classwork-content')); }
-  else if (currentView==='todo')      { renderTodo(); }
+  const changed = mergeData(_pendingData);
+  _pendingData = null;
+  if (changed) {
+    lsSave({ success:true, email:userEmail, courses:cachedCourses, courseWorks:cachedCourseWorks, announcements:cachedAnns, materials:cachedMaterials });
+    if (currentView==='home')           { renderHome(); renderDrawerCourses(); }
+    else if (currentView==='stream')    { _renderStream(currentCourseId, document.getElementById('stream-content')); }
+    else if (currentView==='classwork') { _renderClasswork(currentCourseId, document.getElementById('classwork-content')); }
+    else if (currentView==='todo')      { renderTodo(); }
+  }
   snack('更新しました');
 }
 
@@ -1850,28 +1912,34 @@ async function pollOnce() {
     if (writtenAt === _lastWrittenAt) return;
     _lastWrittenAt = writtenAt;
 
-    const myChanged =
-      cwCount  !== cachedCourseWorks.length ||
-      annCount !== cachedAnns.length        ||
-      matCount !== cachedMaterials.length   ||
+    // 自分のキャッシュより新しいデータがある場合だけ取得
+    const myHasNew =
+      cwCount  > cachedCourseWorks.length ||
+      annCount > cachedAnns.length        ||
+      matCount > cachedMaterials.length   ||
       latestTime > (cachedCourseWorks[0] && cachedCourseWorks[0].created_at || '');
 
-    if (!myChanged) return;
+    if (!myHasNew) return;
 
     const data = await gasCall('forceRefresh');
     if (!data || !data.success) return;
 
+    // 新着件数を差分で計算（mergeData前に計算）
+    const existingCwIds  = new Set(cachedCourseWorks.map(t => String(t.id)));
+    const existingAnnIds = new Set(cachedAnns.map(a => String(a.id)));
+    const existingMatIds = new Set(cachedMaterials.map(m => String(m.id)));
+    const newCw  = (data.courseWorks   ||[]).filter(t => !existingCwIds.has(String(t.id))).length;
+    const newAnn = (data.announcements ||[]).filter(a => !existingAnnIds.has(String(a.id))).length;
+    const newMat = (data.materials     ||[]).filter(m => !existingMatIds.has(String(m.id))).length;
+
+    if (newCw + newAnn + newMat === 0) return;
+
     _pendingData = data;
-    const newCw  = Math.max(0, (data.courseWorks   ||[]).length - cachedCourseWorks.length);
-    const newAnn = Math.max(0, (data.announcements ||[]).length - cachedAnns.length);
-    const newMat = Math.max(0, (data.materials     ||[]).length - cachedMaterials.length);
-    let msg = '新しい投稿があります';
     const parts = [];
     if (newCw  > 0) parts.push(`課題${newCw}件`);
     if (newAnn > 0) parts.push(`お知らせ${newAnn}件`);
     if (newMat > 0) parts.push(`資料${newMat}件`);
-    if (parts.length) msg = parts.join('・') + 'の新着';
-    showUpdateBanner(msg + ' — タップして更新');
+    showUpdateBanner((parts.join('・') || '新しい投稿があります') + ' — タップして更新');
   } catch(_) {}
   finally { _pollActive = false; }
 }
